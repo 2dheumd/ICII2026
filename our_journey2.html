@@ -429,6 +429,114 @@
             text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
             text-align: left;
         }
+
+        /* ================= 全局导航栏移动端适配 ================= */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 10001;
+            /* 确保按钮在最上层 */
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background-color: #8b2b2b;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 900px) {
+            .global-nav {
+                padding: 0 20px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-right {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100vw;
+                height: 0;
+                overflow: hidden;
+                flex-direction: column;
+                background: rgba(250, 246, 235, 0.98);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                gap: 0;
+                transition: height 0.4s ease;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                align-items: center;
+            }
+
+            /* 展开后的菜单 */
+            .nav-right.is-active {
+                height: 360px;
+                padding: 10px 0;
+            }
+
+            .nav-item {
+                width: 100%;
+                text-align: center;
+                padding: 15px 0;
+                border-radius: 0;
+            }
+
+            .dropdown {
+                width: 100%;
+                flex-direction: column;
+                height: auto;
+            }
+
+            .dropdown .nav-item {
+                justify-content: center;
+            }
+
+            /* 移动端下拉菜单改为点击展开，非悬浮 */
+            .dropdown-content {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none;
+                width: 100%;
+                min-width: unset;
+                box-shadow: none;
+                border: none;
+                background: rgba(139, 43, 43, 0.05);
+                display: none;
+                /* 默认隐藏 */
+                opacity: 1;
+                visibility: visible;
+                border-radius: 0;
+            }
+
+            .dropdown-content.is-expanded {
+                display: block;
+            }
+
+            .dropdown-content a {
+                padding: 12px 20px;
+                border-bottom: 1px solid rgba(212, 196, 183, 0.3);
+            }
+
+            /* 汉堡按钮变成叉号动画 */
+            .hamburger.is-active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            .hamburger.is-active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.is-active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+        }
     </style>
 </head>
 
@@ -437,19 +545,24 @@
     <nav class="global-nav">
         <div class="nav-left">
             <a href="index.html" class="logo-link">
-                <!-- 注意图片路径，如果图片在 images 文件夹下请保持不变 -->
                 <img src="images/纵向-亮色背景.png" alt="Team Logo" class="nav-logo">
                 <span class="nav-brand">ICII 2026</span>
             </a>
         </div>
-        <div class="nav-right">
+        <!-- 移动端汉堡菜单按钮 -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-right" id="nav-right">
             <a href="index.html" class="nav-item">Garden Gate</a>
             <a href="garden-atlas.html" class="nav-item">Garden Atlas</a>
             <a href="framed-views.html" class="nav-item">Framed Views</a>
             <a href="echo-pavilion.html" class="nav-item">Echo Pavilion</a>
 
             <div class="dropdown">
-                <a href="#" class="nav-item">Our Journey <span class="dropdown-arrow"></span></a>
+                <a href="#" class="nav-item mobile-dropdown-toggle">Our Journey <span class="dropdown-arrow"></span></a>
                 <div class="dropdown-content">
                     <a href="our_journey.html">About the Garden</a>
                     <a href="our_journey2.html">About the Host Team</a>
@@ -558,6 +671,34 @@
             lastTime = now;
             spawnPetals(e.clientX, e.clientY, 3);
         });
+
+        /* ================= 移动端汉堡菜单交互 ================= */
+        const hamburger = document.getElementById('hamburger');
+        const navRight = document.getElementById('nav-right');
+        const mobileDropdownToggle = document.querySelector('.mobile-dropdown-toggle');
+        const dropdownContent = document.querySelector('.dropdown-content');
+
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('is-active');
+                navRight.classList.toggle('is-active');
+            });
+        }
+
+        if (mobileDropdownToggle) {
+            mobileDropdownToggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 900) {
+                    e.preventDefault(); // 移动端点击不跳转，而是展开子菜单
+                    dropdownContent.classList.toggle('is-expanded');
+                    const arrow = mobileDropdownToggle.querySelector('.dropdown-arrow');
+                    if (dropdownContent.classList.contains('is-expanded')) {
+                        arrow.style.transform = 'rotate(225deg) translate(-2px, -2px)';
+                    } else {
+                        arrow.style.transform = 'rotate(45deg) translateY(-2px)';
+                    }
+                }
+            });
+        }
     </script>
 </body>
 

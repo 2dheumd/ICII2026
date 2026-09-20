@@ -14,19 +14,24 @@
     <nav class="global-nav">
         <div class="nav-left">
             <a href="index.html" class="logo-link">
-                <!-- 注意图片路径，如果图片在 images 文件夹下请保持不变 -->
                 <img src="images/纵向-亮色背景.png" alt="Team Logo" class="nav-logo">
                 <span class="nav-brand">ICII 2026</span>
             </a>
         </div>
-        <div class="nav-right">
+        <!-- 移动端汉堡菜单按钮 -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-right" id="nav-right">
             <a href="index.html" class="nav-item">Garden Gate</a>
             <a href="garden-atlas.html" class="nav-item">Garden Atlas</a>
             <a href="framed-views.html" class="nav-item">Framed Views</a>
             <a href="echo-pavilion.html" class="nav-item">Echo Pavilion</a>
 
             <div class="dropdown">
-                <a href="#" class="nav-item">Our Journey <span class="dropdown-arrow"></span></a>
+                <a href="#" class="nav-item mobile-dropdown-toggle">Our Journey <span class="dropdown-arrow"></span></a>
                 <div class="dropdown-content">
                     <a href="our_journey.html">About the Garden</a>
                     <a href="our_journey2.html">About the Host Team</a>

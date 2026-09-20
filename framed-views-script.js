@@ -138,3 +138,31 @@ globalNavItems.forEach(item => {
         }
     });
 });
+
+/* ================= 移动端汉堡菜单交互 ================= */
+const hamburger = document.getElementById('hamburger');
+const navRight = document.getElementById('nav-right');
+const mobileDropdownToggle = document.querySelector('.mobile-dropdown-toggle');
+const dropdownContent = document.querySelector('.dropdown-content');
+
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('is-active');
+        navRight.classList.toggle('is-active');
+    });
+}
+
+if (mobileDropdownToggle) {
+    mobileDropdownToggle.addEventListener('click', (e) => {
+        if (window.innerWidth <= 900) {
+            e.preventDefault(); // 移动端点击不跳转，而是展开子菜单
+            dropdownContent.classList.toggle('is-expanded');
+            const arrow = mobileDropdownToggle.querySelector('.dropdown-arrow');
+            if (dropdownContent.classList.contains('is-expanded')) {
+                arrow.style.transform = 'rotate(225deg) translate(-2px, -2px)';
+            } else {
+                arrow.style.transform = 'rotate(45deg) translateY(-2px)';
+            }
+        }
+    });
+}
