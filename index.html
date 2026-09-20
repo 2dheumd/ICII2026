@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden Gate | ICII 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+</head>
+
+<body>
+    <!-- 统一的多级导航栏 -->
+    <nav class="global-nav">
+        <div class="nav-left">
+            <a href="index.html" class="logo-link">
+                <!-- 注意图片路径，如果图片在 images 文件夹下请保持不变 -->
+                <img src="images/纵向-亮色背景.png" alt="Team Logo" class="nav-logo">
+                <span class="nav-brand">ICII 2026</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="nav-item">Garden Gate</a>
+            <a href="garden-atlas.html" class="nav-item">Garden Atlas</a>
+            <a href="framed-views.html" class="nav-item">Framed Views</a>
+            <a href="echo-pavilion.html" class="nav-item">Echo Pavilion</a>
+
+            <div class="dropdown">
+                <a href="#" class="nav-item">Our Journey <span class="dropdown-arrow"></span></a>
+                <div class="dropdown-content">
+                    <a href="our_journey.html">About the Garden</a>
+                    <a href="our_journey2.html">About the Host Team</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 用于触发GSAP动画的滚动高度 -->
+    <div class="scroll-container"></div>
+
+    <!-- 交互动画视口 -->
+    <div class="viewport">
+        <div class="gate-wrapper">
+            <div class="gate gate-left">
+                <div class="door-ring"></div>
+            </div>
+            <div class="gate gate-right">
+                <div class="door-ring"></div>
+            </div>
+        </div>
+
+        <img src="images/背景.png" alt="Background" class="bg-layer">
+        <div id="falling-flowers-container"></div>
+
+        <div class="scene scene-1">
+            <img src="images/院.png" alt="Courtyard" class="scene-img">
+            <div class="text-box">
+                <h3>Garden Atlas</h3>
+            </div>
+        </div>
+
+        <div class="scene scene-2">
+            <img src="images/窗.png" alt="Window" class="scene-img">
+            <div class="text-box">
+                <h3>Framed Views</h3>
+            </div>
+        </div>
+
+        <div class="scene scene-3">
+            <img src="images/台.png" alt="Terrace" class="scene-img">
+            <div class="text-box">
+                <h3>Our Journey</h3>
+            </div>
+        </div>
+
+        <div class="scene scene-4">
+            <img src="images/亭.png" alt="Pavilion" class="scene-img">
+            <div class="text-box">
+                <h3>Echo Pavilion</h3>
+            </div>
+        </div>
+
+        <div class="scene intro-scene">
+            <h1>Garden of Condensation</h1>
+            <h2>Boundless yet Defined, Gathering into a Garden</h2>
+            <div class="intro-desc">
+                <p>Welcome to ICII 2026. Here, there are no high walls isolating us, only open boundaries composed of
+                    courtyards, latticed windows, corridors, and water systems. Every iGEM team retains its cultural
+                    roots and scientific functions in the garden, yet can see another solution through a window and walk
+                    towards new collaborations along a corridor.</p>
+                <p>Just as liquid-liquid phase separation can form dynamic, reversible membraneless compartments within
+                    a cell, ICII hopes to allow scientific ideas scattered across different regions to condense around
+                    common issues, recombine through exchange, and return to broader real-world scenarios after
+                    collaboration is complete.</p>
+                <p class="en-desc">Different spaces, distinct functions, one living garden.</p>
+            </div>
+            <button class="stamp-box" id="openGateBtn">Open the Gate</button>
+        </div>
+    </div>
+
+    <!-- 动画结束后的长图文介绍板块 -->
+    <div class="post-animation-content">
+        <section class="info-section">
+            <h2 class="section-title">01 From a Road to a Garden</h2>
+            <p>In 2025, NAU-CHINA initiated Into China, Into iGEM (ICII) with the theme of "The Modern Silk Road of
+                Synthetic Biology", inviting 14 iGEM teams from 11 cities to participate. Projects, regional cultures,
+                and scientific stories unfolded along the map, making the ancient route of communication a new bond
+                connecting traditional wisdom with modern synthetic biology.</p>
+            <p>In 2026, we hope to push this connection forward. Roads allow people far apart to reach each other, but
+                gardens allow those who arrive to truly meet: they stay, observe, exchange experiences in different
+                spaces, and collectively change the landscape before them. Therefore, this year's ICII is no longer just
+                a project exhibition, but a "Garden of Condensation" jointly built and continuously grown by different
+                teams.</p>
+        </section>
+
+        <section class="info-section">
+            <h2 class="section-title">02 What is ICII?</h2>
+            <p>ICII stands for Into China, Into iGEM. It is an invitation to approach Chinese culture and the iGEM
+                community, as well as a collaboration platform crossing geographical, linguistic, and disciplinary
+                boundaries. We invite iGEM teams from different countries and regions to retell their synthetic biology
+                projects from a cultural perspective, finding connections among each other's scientific problems,
+                technical modules, social issues, and educational practices.</p>
+            <p>Here, culture is not an add-on decoration outside of science, but a language to understand complex
+                technologies; projects are not isolated exhibits, but open questions that can be responded to,
+                referenced, and collectively perfected.</p>
+        </section>
+
+        <section class="info-section">
+            <h2 class="section-title">03 Why a Chinese Garden?</h2>
+            <p>Chinese gardens never rely on completely enclosed spaces to establish order. Courtyards divide functions,
+                latticed windows preserve sightlines, corridors connect paths, and water systems convey changes. It
+                emphasizes being "separated but not disconnected, bounded but not closed": every scene has its own
+                boundary but constantly interacts with the surrounding environment; with every step a visitor takes, the
+                view changes accordingly.</p>
+            <p>This spatial wisdom cleverly corresponds to the liquid-liquid phase separation studied by CellApp.
+                Biomolecules can aggregate into condensates with specific functions without membrane structures;
+                different condensates remain relatively independent while exchanging matter and information with the
+                surrounding environment; signals such as light, temperature, and pH can also alter their formation,
+                dissociation, and function. The garden thus provides not only a visual theme but also an intuitive
+                language for understanding "boundless yet defined" cellular compartments.</p>
+        </section>
+
+        <section class="info-section grid-section">
+            <h2 class="section-title">04 Science in the Garden</h2>
+            <div class="science-grid">
+                <div class="science-card">
+                    <h4>Courtyard: Boundless yet Defined Functional Spaces</h4>
+                    <p>Courtyards form order through boundaries without completely isolating the inside from the
+                        outside. This corresponds to membraneless compartmentalization: specific molecules locally
+                        enrich in cells, improving the organization and efficiency of reactions while maintaining
+                        exchange capabilities.</p>
+                </div>
+                <div class="science-card">
+                    <h4>Pavilion: Mutually Orthogonal Functional Modules</h4>
+                    <p>Different pavilions have unique uses and styles, neither replacing nor interfering with each
+                        other. They correspond to the orthogonal condensates in CellApp that undertake different tasks,
+                        allowing multiple functions to run in parallel within the same cell.</p>
+                </div>
+                <div class="science-card">
+                    <h4>Latticed Window: Information Exchange Across Boundaries</h4>
+                    <p>A latticed window demarcates space while bringing another scene into view. It symbolizes
+                        observation, questioning, and inspiration between teams, and also corresponds to the selective
+                        matter and information exchange between condensates and the surrounding environment.</p>
+                </div>
+                <div class="science-card">
+                    <h4>Corridor: Continuous Collaboration Paths</h4>
+                    <p>Corridors connect scattered spaces, making an encounter a path that can be continued. It
+                        corresponds to team pairing, problem exchange, module discussion, and joint creation in ICII.
+                    </p>
+                </div>
+                <div class="science-card">
+                    <h4>Four Seasons: Dynamic Changes Responding to the Environment</h4>
+                    <p>Gardens change with light, shadows, temperature, and seasons. CellApp similarly uses signals like
+                        light, temperature, and pH to regulate the aggregation and dissociation of condensates, enabling
+                        functional spaces within the cell to form, disappear, or recombine on demand.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <h2 class="section-title">05 What Kind of Garden Do We Want to Build?</h2>
+            <p>We look forward to a shared space that does not erase differences. Every team can retain its regional
+                culture, project language, and research focus, while creating new value from these differences through
+                collaboration. ICII 2026 hopes to achieve three things:</p>
+            <ul class="goal-list">
+                <li>Enable the public to understand synthetic biology through cultural imagery, and allow teams to
+                    discover new possibilities through mutual observation.</li>
+                <li>Make culture an entry point for understanding science, not an attached label. Let every team be seen
+                    and see others.</li>
+                <li>Keep the platform expandable, reserving new entrances for future teams.</li>
+            </ul>
+
+            <div class="action-buttons-group">
+                <a href="garden-atlas.html" class="action-link-btn">Enter Garden Atlas</a>
+                <a href="tujian.html" class="action-link-btn recommendation-btn">Interactive Scenery Map</a>
+            </div>
+        </section>
+
+        <footer class="global-footer">
+            <h3>The Gate Remains Open, the Story Continues</h3>
+            <p>From a Silk Road crossing regions to a Garden of Condensation jointly grown by multiple teams, ICII
+                always believes: the boundaries of science should not become high walls for communication, and cultural
+                differences do not need to be erased. It is exactly the different spaces, functions, and experiences
+                that give the collaboration network richer possibilities.</p>
+            <p>One team, one scene, gathering and dispersing in order; boundless yet defined, coexisting and
+                co-creating.</p>
+            <div class="footer-meta">
+                <p>ICII (Into China, Into iGEM) is initiated by NAU-CHINA. Copyright and licensing information for team
+                    projects, images, and joint works hosted on the website are subject to the annotations on each page.
+                    Content involving engineering biology and experimental design is for scientific exchange and public
+                    education only, and does not constitute medical, product, or operational advice.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

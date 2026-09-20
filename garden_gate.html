@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gardengate</title>
+    <link rel="stylesheet" href="./css/garden_gate.css">
+    <style>
+        /* ================= Wave footer ================= */
+        .wave-footer {
+            position: fixed;
+            width: 100%;
+            height: 220px;
+            z-index: 50;
+            margin-top: 80vh;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .wave-footer .waves {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .wave-footer .wave {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 200%;
+            height: 100%;
+            background-repeat: repeat-x;
+            background-position: 0 bottom;
+            background-size: 50% 100%;
+        }
+        .wave-footer .wave1 {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 220' preserveAspectRatio='none'><path d='M0,80 C150,10 350,150 600,80 C850,10 1050,150 1200,80 L1200,220 L0,220 Z' fill='%233a6b4a' fill-opacity='0.35'/></svg>");
+            animation: wave-move 18s linear infinite;
+        }
+        .wave-footer .wave2 {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 220' preserveAspectRatio='none'><path d='M0,100 C150,30 350,170 600,100 C850,30 1050,170 1200,100 L1200,220 L0,220 Z' fill='%2354725f' fill-opacity='0.5'/></svg>");
+            animation: wave-move 13s linear infinite;
+            animation-direction: reverse;
+        }
+        .wave-footer .wave3 {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 220' preserveAspectRatio='none'><path d='M0,120 C150,50 350,190 600,120 C850,50 1050,190 1200,120 L1200,220 L0,220 Z' fill='%232f4f3a' fill-opacity='0.78'/></svg>");
+            animation: wave-move 9s linear infinite;
+        }
+        @keyframes wave-move {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .wave-footer .footer-content {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 24px;
+            padding: 0 60px 16px 60px;
+            z-index: 2;
+        }
+        .wave-footer .footer-media {
+            flex: 0 0 auto;
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .wave-footer .footer-media img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+        }
+        .wave-footer .footer-note {
+            flex: 0 1 900px;
+            color: #f4f7f2;
+            font-size: 12px;
+            line-height: 1.8;
+            letter-spacing: 0.3px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+            text-align: left;
+            font-family: "Noto Serif SC", "Georgia", serif;
+        }
+        .wave-footer .footer-note strong {
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .wave-footer { height: 200px; }
+            .wave-footer .footer-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                padding: 0 20px 14px 20px;
+                justify-content: flex-end;
+            }
+            .wave-footer .footer-media {
+                width: 48px;
+                height: 48px;
+            }
+            .wave-footer .footer-note {
+                font-size: 10px;
+                text-align: center;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-container">
+        <img src="images/背景.png" alt="Background" class="bg-layer">
+    </div>
+
+    <aside class="sidebar-nav">
+        <ul class="nav-list">
+            <li><a href="#sec-01" class="petal-btn">From a Path to a Garden</a></li>
+            <li><a href="#sec-02" class="petal-btn">What Is ICII?</a></li>
+            <li><a href="#sec-03" class="petal-btn">Why a Chinese Garden?</a></li>
+            <li><a href="#sec-04" class="petal-btn">Science in the Garden</a></li>
+            <li><a href="#sec-05" class="petal-btn">What Kind of Garden Do We Want to Build?</a></li>
+        </ul>
+        <div class="sidebar-illustration">
+            <img src="images/雪景.png" alt="Snow scene illustration">
+        </div>
+    </aside>
+
+    <main class="content">
+
+        <section id="sec-01" class="split-layout">
+            <div class="split-media">
+                <img src="images/亭.png" alt="From a Path to a Garden">
+            </div>
+            <div class="split-text">
+                <h1>01 From a Path to a Garden</h1>
+                <p>
+                    In 2025, NAU-CHINA launched Into China, Into iGEM (ICII) under the theme "The Modern Synthetic Biology Silk Road," inviting 14 iGEM teams from 11 cities to participate together. The projects, regional cultures, and scientific stories unfolded along the map, making the ancient exchange route a new bond connecting traditional wisdom with modern synthetic biology.
+                </p>
+                <p>
+                    In 2026, we hope to carry this connection further. A path allows people far apart to reach one another, while a garden allows those who arrive to truly meet: they linger in different spaces, observe, exchange experiences, and together transform the landscape before them. Therefore, this year's ICII is no longer just a project showcase, but a "Garden of Convergence" jointly built and continuously growing by different teams.
+                </p>
+            </div>
+        </section>
+
+        <section id="sec-02" class="split-layout reverse">
+            <div class="split-media">
+                <img src="images/桃树亭子.png" alt="What Is ICII">
+            </div>
+            <div class="split-text">
+                <h2>02 What Is ICII?</h2>
+                <p>
+                    ICII stands for Into China, Into iGEM. It is both an invitation to approach Chinese culture and the iGEM community, and a collaboration platform that crosses regional, linguistic, and disciplinary boundaries. We invite iGEM teams from different countries and regions to retell their synthetic biology projects from a cultural starting point, and to find connections among each other's scientific questions, technical modules, social issues, and educational practices.
+                </p>
+                <p>
+                    Here, culture is not an ornament outside of science, but a language for understanding complex technology; projects are not isolated exhibits, but open questions that can be responded to, borrowed from, and jointly refined.
+                </p>
+            </div>
+        </section>
+
+        <section id="sec-03" class="split-layout">
+            <div class="split-media">
+                <img src="images/bkbg.webp" alt="Why a Chinese Garden">
+            </div>
+            <div class="split-text">
+                <h2>03 Why a Chinese Garden?</h2>
+                <p>
+                    A Chinese garden never establishes order through completely enclosed spaces. Courtyards divide functions, lattice windows preserve sightlines, corridors connect paths, and water systems convey change. It emphasizes "separated yet connected, bounded yet not closed": each scene has its own boundary, yet always relates to its surroundings; with every step the visitor takes, the scenery before them changes accordingly.
+                </p>
+                <p>
+                    This spatial wisdom corresponds ingeniously to the liquid-liquid phase separation studied by CellApp. Biomolecules can gather into condensates with specific functions without membrane structures; different condensates remain relatively independent while exchanging matter and information with their surroundings; signals such as light, temperature, and pH can also alter their formation, dissociation, and function. The garden thus not only provides a visual theme, but also offers an intuitive language for understanding "bounded yet wall-less" cellular compartments.
+                </p>
+            </div>
+        </section>
+
+        <section id="sec-04" class="split-layout reverse">
+            <div class="split-media">
+                <img src="images/人.png" alt="Science in the Garden">
+            </div>
+            <div class="split-text">
+                <h2>04 Science in the Garden</h2>
+
+                <h3>Courtyard: Bounded Yet Wall-less Functional Space</h3>
+                <p>
+                    A courtyard forms order through boundaries, yet does not completely isolate the interior from the outside. It corresponds to membraneless compartmentalization: specific molecules become locally enriched within a cell, improving the organization and efficiency of reactions while retaining the capacity for exchange.
+                </p>
+
+                <h3>Pavilions: Mutually Orthogonal Functional Modules</h3>
+                <p>
+                    Different pavilions each have their own purpose and style, neither replacing nor interfering with one another. They correspond to the orthogonal condensates in CellApp that undertake different tasks, enabling multiple functions to run in parallel within the same cell.
+                </p>
+
+                <h3>Lattice Windows: Information Exchange Across Boundaries</h3>
+                <p>
+                    A lattice window both defines a space and brings another scene into view. It symbolizes observation, questioning, and inspiration between teams, and also corresponds to the selective exchange of matter and information between condensates and their surroundings.
+                </p>
+
+                <h3>Corridors: Continuously Unfolding Paths of Collaboration</h3>
+                <p>
+                    Corridors connect scattered spaces, turning a single encounter into a path that can be continued. They correspond to team matching, question exchange, module discussion, and joint creation in ICII.
+                </p>
+
+                <h3>Four Seasons: Dynamic Changes in Response to the Environment</h3>
+                <p>
+                    A garden changes with light, temperature, and season. CellApp likewise uses signals such as light, temperature, and pH to regulate the assembly and disassembly of condensates, allowing functional spaces within the cell to form, disappear, or recombine as needed.
+                </p>
+            </div>
+        </section>
+
+        <section id="sec-05" class="split-layout">
+            <div class="split-media">
+                <img src="images/燕子.png" alt="What Kind of Garden Do We Want to Build">
+            </div>
+            <div class="split-text">
+                <h2>05 What Kind of Garden Do We Want to Build?</h2>
+                <p>
+                    We envision a shared space that does not flatten differences. Each team can retain its own regional culture, project language, and research focus, while collaboration allows these differences to generate new value. ICII 2026 hopes to achieve three things: to help the public understand synthetic biology through cultural imagery, to let teams observe one another and discover new possibilities, and to let a single exchange ultimately leave behind shared outcomes that can continue to be used.
+                </p>
+                <ul>
+                    <li>Let culture become an entry point for understanding science, not an added label.</li>
+                    <li>Let every team be seen, and also see others.</li>
+                    <li>Let the platform continue to expand, preserving new entry points for future teams.</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="gallery-entry">
+            <a href="./tujian.html" class="gallery-btn petal-btn">Enter the Garden Atlas →</a>
+        </div>
+
+    </main>
+
+<footer class="wave-footer">
+        <div class="waves">
+            <div class="wave wave1"></div>
+            <div class="wave wave2"></div>
+            <div class="wave wave3"></div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-media">
+                <img src="images/igemlogo.png" alt="ICII illustration">
+            </div>
+            <div class="footer-note">
+                <strong>ICII (Into China, Into iGEM)</strong> is initiated by NAU-CHINA. Copyright and licensing information for team projects, images, and collaborative works displayed on this website is indicated on each individual page. Content involving engineering biology and experimental design is intended solely for scientific exchange and public education, and does not constitute medical, product, or operational advice. Corrections, licensing inquiries, or accessibility requests are welcome via the contact information provided on the site.
+            </div>
+        </div>
+</footer>
+
+    <div class="petal-layer" id="petalLayer"></div>
+
+    <script src="./js/garden_gate.js"></script>
+</body>
+</html>

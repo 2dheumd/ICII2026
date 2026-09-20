@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>Cell App | 凝聚交互</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background-color: #fbfbfa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: "Noto Serif SC", STSong, serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .global-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 80px;
+            background: rgba(244, 236, 216, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #d4c4b7;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            box-sizing: border-box;
+            z-index: 9999;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            font-family: "Noto Serif SC", STSong, serif;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-link:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 4px;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.15));
+        }
+
+        .nav-brand {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #8b2b2b;
+            letter-spacing: 3px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            color: #4a3b32;
+            font-size: 1.05rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            padding: 8px 18px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .nav-item:hover {
+            color: #f9f6ef;
+            background-color: #a84b4b;
+            transform: scale(1.05);
+        }
+
+        .nav-petal {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #ffcce5;
+            border-radius: 10px 0 10px 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .img {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            max-width: 100%;
+            max-height: 100%;
+            overflow: hidden;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 1.2s ease;
+            transform-origin: center center;
+            will-change: transform;
+        }
+
+        .img img {
+            position: absolute;
+            display: block;
+            object-fit: contain;
+            max-width: 100%;
+            max-height: 100%;
+            transition: filter 0.3s ease, transform 0.2s ease;
+            pointer-events: none;
+        }
+
+        .img.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .img.zoom-in {
+            transform: scale(1.18) translateY(-3%);
+        }
+
+        .img.zoom-in .bg {
+            filter: blur(5px) brightness(0.6) !important;
+            transform: scale(1.3) !important;
+            transition: filter 0.8s ease, transform 0.8s ease;
+        }
+
+        .img.zoom-in .ren,
+        .img.zoom-in .hongri,
+        .img.zoom-in .yanzi,
+        .img.zoom-in .xiaoyanzi {
+            filter: brightness(1.15) contrast(1.08) drop-shadow(0 8px 30px rgba(0, 0, 0, 0.2)) !important;
+            transition: filter 0.8s ease;
+        }
+
+        .img.zoom-in .zhu,
+        .img.zoom-in .zhuzi,
+        .img.zoom-in .lu,
+        .img.zoom-in .tingzi {
+            filter: brightness(0.8) contrast(1.1) !important;
+            transition: filter 0.8s ease;
+        }
+
+        .tingzi {
+            width: 40%;
+            left: 12%;
+            bottom: 22%;
+            z-index: 4;
+            opacity: 0.9;
+        }
+
+        .zhu {
+            width: 50%;
+            right: -10%;
+            bottom: -40%;
+            z-index: 3;
+        }
+
+        .zhuzi {
+            width: 30%;
+            left: -5%;
+            bottom: 5%;
+            z-index: 2;
+        }
+
+        .lu {
+            width: 42%;
+            left: 32%;
+            bottom: 0%;
+            z-index: 1;
+        }
+
+        .yanzi {
+            width: 7%;
+            right: 18%;
+            top: 8%;
+            z-index: 6;
+            opacity: 1;
+            transform: rotate(4deg);
+            filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.08));
+        }
+
+        .xiaoyanzi {
+            width: 5%;
+            left: 10%;
+            top: 5%;
+            z-index: 5;
+            opacity: 0.8;
+            transform: rotate(-6deg);
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.06));
+        }
+
+        .ren {
+            width: 5%;
+            left: 30%;
+            top: 44%;
+            z-index: 5;
+            opacity: 1;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.06));
+        }
+
+        .hongri {
+            width: 5%;
+            right: 10%;
+            top: 14%;
+            z-index: 1;
+            opacity: 1;
+            display: block;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.06));
+        }
+
+        .button-group {
+            position: fixed;
+            left: 24px;
+            bottom: 30px;
+            z-index: 999;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            background: rgba(220, 215, 200, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            padding: 12px 18px;
+            border-radius: 60px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border: 1px solid rgba(255, 247, 230, 0.3);
+            transition: background 0.2s;
+        }
+
+        .button-group button {
+            background: rgba(245, 240, 225, 0.85);
+            border: none;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #3d3a30;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            transition: all 0.2s ease;
+            border: 1px solid rgba(200, 185, 160, 0.2);
+            font-family: "Noto Serif SC", STSong, serif;
+        }
+
+        .button-group button:hover {
+            background: rgba(250, 245, 235, 0.95);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+            border-color: rgba(180, 160, 130, 0.4);
+        }
+
+        .button-group button:active {
+            transform: translateY(0px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+        }
+
+        body.dark {
+            filter: brightness(0.45) contrast(1.15);
+        }
+
+        body.dark .button-group {
+            filter: brightness(1.3) contrast(1.2);
+        }
+
+        .light-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 20px;
+            padding: 40px 60px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        .light-popup.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate(-50%, -50%) scale(1);
+            animation: popupGlow 3s ease-in-out infinite;
+        }
+
+        .light-popup.hide {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.9);
+        }
+
+        .light-popup .popup-text {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            letter-spacing: 8px;
+            text-align: center;
+            font-family: "Noto Serif SC", STSong, serif;
+        }
+
+        .light-popup .popup-sub {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
+            margin-top: 12px;
+            letter-spacing: 4px;
+            font-weight: 300;
+        }
+
+        @keyframes popupGlow {
+            0% {
+                box-shadow: 0 20px 60px rgba(255, 255, 255, 0.05);
+            }
+
+            50% {
+                box-shadow: 0 20px 80px rgba(255, 255, 255, 0.15);
+            }
+
+            100% {
+                box-shadow: 0 20px 60px rgba(255, 255, 255, 0.05);
+            }
+        }
+
+        .dialog-box {
+            position: fixed;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 18px 24px;
+            max-width: 280px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            opacity: 0;
+            transform: scale(0.8) translateY(10px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            pointer-events: none;
+        }
+
+        .dialog-box.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+
+        .dialog-box .dialog-text {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #2c2c2c;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            font-family: "Noto Serif SC", STSong, serif;
+        }
+
+        .dialog-box .dialog-text .highlight {
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        .dialog-box::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 30px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 12px solid rgba(255, 255, 255, 0.92);
+        }
+
+        #dialogBox2 .dialog-text .highlight {
+            color: #2980b9;
+        }
+
+        .img2 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 1.2s ease;
+        }
+
+        .img2.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .img2 img {
+            position: absolute;
+            display: block;
+            object-fit: contain;
+            max-width: 100%;
+            max-height: 100%;
+            pointer-events: none;
+        }
+
+        .img2 .xuedi {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .img2 .ren2 {
+            width: 20%;
+            right: 30%;
+            top: 44%;
+            z-index: 5;
+            opacity: 1;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.06));
+        }
+
+        .img2 .tstingzi {
+            width: 40%;
+            left: 12%;
+            bottom: 22%;
+            z-index: 4;
+            opacity: 0.9;
+            transform-origin: bottom center !important;
+            animation: tstingziSway 3s ease-in-out infinite;
+        }
+
+        @keyframes tstingziSway {
+            0% {
+                transform: rotate(-1deg);
+            }
+
+            50% {
+                transform: rotate(1deg);
+            }
+
+            100% {
+                transform: rotate(-1deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="global-nav">
+        <div class="nav-left">
+            <a href="index.html" class="logo-link">
+                <img src="images/纵向-亮色背景.png" alt="Team Logo" class="nav-logo">
+                <span class="nav-brand">ICII 2026</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="nav-item">首页</a>
+            <a href="garden-atlas.html" class="nav-item">一城一景</a>
+            <a href="framed-views.html" class="nav-item">借景相望</a>
+            <a href="condensation-workshop.html" class="nav-item">聚景成园</a>
+            <a href="echo-pavilion.html" class="nav-item">回声亭</a>
+            <a href="cellapp.html" class="nav-item">Cell App</a>
+        </div>
+    </nav>
+
+    <div class="img" id="mainScene">
+        <img src="images/bg2.png" alt="背景" class="bg" style="width:100%; height:100%; object-fit:cover; z-index:0;" />
+        <img src="images/亭子.png" alt="亭台" class="tingzi" />
+        <img src="images/竹.png" alt="修竹" class="zhu" />
+        <img src="images/竹.png" alt="丛竹" class="zhuzi" />
+        <img src="images/路.png" alt="小径" class="lu" />
+        <img src="images/燕子.png" alt="飞燕" class="yanzi" />
+        <img src="images/小燕子.png" alt="小燕子" class="xiaoyanzi" />
+        <img src="images/人.png" alt="人" class="ren" />
+        <img src="images/红日.png" alt="红日" class="hongri" />
+    </div>
+
+    <div class="button-group">
+        <button class="button1">light</button>
+        <button class="button2">PH</button>
+        <button class="button3">T</button>
+        <button class="button4">Swap</button>
+    </div>
+
+    <div class="light-popup" id="lightPopup">
+        <div class="popup-text">光控可逆凝聚</div>
+        <div class="popup-sub">光 控 可 逆 凝 聚</div>
+    </div>
+    <div class="dialog-box" id="dialogBox">
+        <div class="dialog-text">页面景观发生动态变化，<span class="highlight">解释温度响应</span></div>
+    </div>
+
+    <div class="img2" id="scene2">
+        <img src="images/雪地.jpg" alt="" class="xuedi" />
+        <img src="images/人.png" alt="" class="ren2" />
+        <img src="images/桃树.png" alt="" class="tstingzi" />
+    </div>
+    <div class="dialog-box" id="dialogBox2">
+        <div class="dialog-text">雪景中的<span class="highlight">温度响应</span></div>
+    </div>
+
+    <script>
+        const globalNavItems = gsap.utils.toArray('.nav-item');
+        function createGlobalNavPetal(parent) {
+            const petal = document.createElement('div');
+            petal.classList.add('nav-petal');
+            parent.appendChild(petal);
+            const startX = Math.random() * parent.offsetWidth;
+            const startY = -10;
+            gsap.set(petal, { x: startX, y: startY, rotation: Math.random() * 360, scale: Math.random() * 0.5 + 0.5 });
+            gsap.to(petal, {
+                y: parent.offsetHeight + 10, x: startX + (Math.random() * 20 - 10),
+                rotation: "+=" + (Math.random() * 200 - 100), opacity: 0,
+                duration: 0.5 + Math.random() * 0.4, ease: "power1.in",
+                onComplete: () => petal.remove()
+            });
+        }
+        globalNavItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                for (let j = 0; j < 6; j++) { setTimeout(() => { createGlobalNavPetal(item); }, j * 60); }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const mainScene = document.getElementById('mainScene');
+            const hongri = document.querySelector('.hongri');
+            const yanzi = document.querySelector('.yanzi');
+            const bodyEl = document.body;
+
+            function initPos(el) {
+                if (!el) return { l: 0, t: 0 };
+                const r = el.getBoundingClientRect(); const pr = mainScene.getBoundingClientRect();
+                const l = ((r.left - pr.left) / pr.width) * 100; const t = ((r.top - pr.top) / pr.height) * 100;
+                el.style.left = l + '%'; el.style.top = t + '%'; el.style.right = 'auto';
+                return { l, t };
+            }
+            const hp = initPos(hongri), yp = initPos(yanzi);
+            let hpP = 0, ypP = 0;
+            gsap.ticker.add(() => {
+                hpP += 0.00015;
+                if (hpP > 1) { hpP = 0; gsap.set(hongri, { left: hp.l + '%', top: hp.t + '%' }); hpP = 0.0001; }
+                gsap.set(hongri, { left: (hp.l - hpP * 90) + '%', top: (hp.t - Math.sin(hpP * Math.PI) * 8) + '%' });
+                ypP += 0.00025;
+                if (ypP > 1) { ypP = 0; gsap.set(yanzi, { left: yp.l + '%', top: yp.t + '%' }); ypP = 0.001; }
+                gsap.set(yanzi, { left: (yp.l - ypP * 80) + '%' });
+            });
+
+            const zhu = document.querySelector('.zhu'), zhuzi = document.querySelector('.zhuzi');
+            [zhu, zhuzi].forEach(el => { if (el) { el.style.transformOrigin = 'bottom center'; gsap.to(el, { rotation: el === zhu ? 3 : 2.5, duration: el === zhu ? 3 : 2, ease: "sine.inOut", yoyo: !0, repeat: -1 }); } });
+
+            const xiaoyanzi = document.querySelector('.xiaoyanzi');
+            if (xiaoyanzi) {
+                xiaoyanzi.style.transformOrigin = 'center center';
+                gsap.to(xiaoyanzi, { y: -20, duration: 1.5, ease: "sine.inOut", yoyo: !0, repeat: -1 });
+                gsap.to(xiaoyanzi, { rotation: 3, duration: 3, ease: "sine.inOut", yoyo: !0, repeat: -1 });
+                gsap.to(xiaoyanzi, { scaleX: 0.5, duration: 0.8, ease: "sine.inOut", yoyo: !0, repeat: -1 });
+            }
+
+            const lightBtn = document.querySelector('.button1'), popup = document.getElementById('lightPopup');
+            let popupTimer = null;
+            lightBtn && popup && lightBtn.addEventListener('click', function () {
+                bodyEl.classList.toggle('dark');
+                if (hongri.style.display === 'none') { hongri.style.display = 'block'; hongri.style.opacity = '1'; } else { gsap.to(hongri, { opacity: 0, duration: .3, onComplete: () => { hongri.style.display = 'none'; } }); }
+                popup.classList.remove('hide'); popup.classList.add('show');
+                clearTimeout(popupTimer);
+                popupTimer = setTimeout(() => { popup.classList.remove('show'); popup.classList.add('hide'); setTimeout(() => popup.classList.remove('hide'), 600); }, 2000);
+            });
+
+            const phBtn = document.querySelector('.button2'), ren = document.querySelector('.ren'), dBox = document.getElementById('dialogBox'), dText = dBox ? dBox.querySelector('.dialog-text') : null;
+            let isZoomed = false, isAtTarget = false, dTimer = null, typeTimer = null;
+            function zoomIn(cb) { if (isZoomed) return cb && cb(); gsap.to(mainScene, { scale: 1.15, duration: 1, ease: "power2.inOut", transformOrigin: "center center", onComplete: () => { isZoomed = !0; cb && cb(); } }); }
+            function zoomOut(cb) { if (!isZoomed) return cb && cb(); gsap.to(mainScene, { scale: 1, duration: .8, ease: "power2.inOut", transformOrigin: "center center", onComplete: () => { isZoomed = !1; cb && cb(); } }); }
+
+            function typeWriter(text, cb) {
+                dText.innerHTML = ''; dBox.classList.add('show'); let idx = 0, chars = text.split('');
+                function nxt() {
+                    if (idx < chars.length) {
+                        if (chars[idx] === '<') { let tag = ''; while (idx < chars.length && chars[idx] !== '>') { tag += chars[idx]; idx++; } tag += chars[idx]; idx++; dText.innerHTML += tag; typeTimer = setTimeout(nxt, 30); } else { dText.innerHTML += chars[idx]; idx++; typeTimer = setTimeout(nxt, 30 + Math.random() * 20); }
+                    } else cb && cb();
+                } nxt();
+            }
+            function updateDBoxPos() {
+                const r = ren.getBoundingClientRect(); let l = r.left + r.width + 20, t = r.top - 20;
+                if (l + 320 > window.innerWidth) l = r.left - 320 - 20; if (t + 100 > window.innerHeight) t = r.top - 100 + 40;
+                if (t < 10) t = 10; if (l < 10) l = 10; dBox.style.left = l + 'px'; dBox.style.top = t + 'px';
+            }
+            phBtn && ren && dBox && dText && phBtn.addEventListener('click', function () {
+                clearTimeout(dTimer); clearTimeout(typeTimer); dBox.classList.remove('show'); dText.innerHTML = '';
+                if (isZoomed) zoomOut();
+                const r = ren.getBoundingClientRect(), pr = mainScene.getBoundingClientRect();
+                const cx = ((r.left - pr.left) / pr.width) * 100, cy = ((r.top - pr.top) / pr.height) * 100;
+                const pts = [{ x: cx, y: cy }, { x: cx - 1, y: cy + 3 }, { x: cx - 2, y: cy + 5 }, { x: cx, y: cy + 6 }, { x: cx + 6, y: cy + 8 }];
+                ren.style.transformOrigin = 'center center';
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        isAtTarget = !isAtTarget;
+                        setTimeout(() => { zoomIn(() => { setTimeout(() => { updateDBoxPos(); typeWriter('页面景观发生动态变化，<span class="highlight">解释温度响应</span>', () => { dTimer = setTimeout(() => { dBox.classList.remove('show'); setTimeout(zoomOut, 300); dTimer = null; }, 5000); }); }, 200); }); }, 300);
+                    }
+                });
+                tl.to(ren, { duration: 2, ease: "power2.inOut", keyframes: [{ left: pts[0].x + '%', top: pts[0].y + '%', scale: 1, duration: 0 }, { left: pts[1].x + '%', top: pts[1].y + '%', scale: 1.3, duration: .5 }, { left: pts[2].x + '%', top: pts[2].y + '%', scale: 1.6, duration: .5 }, { left: pts[3].x + '%', top: pts[3].y + '%', scale: 1.9, duration: .5 }, { left: pts[4].x + '%', top: pts[4].y + '%', scale: 2.2, duration: .5 }] });
+                tl.to(ren, { rotation: 4, duration: .3, ease: "sine.inOut", yoyo: !0, repeat: 4 }, 0);
+            });
+
+            const tBtn = document.querySelector('.button3'), scene2 = document.getElementById('scene2'), dBox2 = document.getElementById('dialogBox2'), dText2 = dBox2 ? dBox2.querySelector('.dialog-text') : null;
+            let isSceneSwitched = !1, tstingziAnim = null, dTimer2 = null, typeTimer2 = null;
+            function typeWriter2(text, cb) {
+                if (!dText2) return; dText2.innerHTML = ''; dBox2.classList.add('show'); let idx = 0, chars = text.split('');
+                function nxt() {
+                    if (idx < chars.length) {
+                        if (chars[idx] === '<') { let tag = ''; while (idx < chars.length && chars[idx] !== '>') { tag += chars[idx]; idx++; } tag += chars[idx]; idx++; dText2.innerHTML += tag; typeTimer2 = setTimeout(nxt, 30); } else { dText2.innerHTML += chars[idx]; idx++; typeTimer2 = setTimeout(nxt, 30 + Math.random() * 20); }
+                    } else cb && cb();
+                } nxt();
+            }
+            function updateDBox2Pos() {
+                const r2 = document.querySelector('.ren2'); if (!r2) return;
+                const r = r2.getBoundingClientRect(); let l = r.left + r.width + 20, t = r.top - 20;
+                if (l + 320 > window.innerWidth) l = r.left - 320 - 20; if (t + 100 > window.innerHeight) t = r.top - 100 + 40;
+                if (t < 10) t = 10; if (l < 10) l = 10; dBox2.style.left = l + 'px'; dBox2.style.top = t + 'px';
+            }
+            tBtn && tBtn.addEventListener('click', function () {
+                if (!isSceneSwitched) {
+                    dBox.classList.remove('show'); mainScene.classList.add('hidden');
+                    setTimeout(() => {
+                        scene2.classList.add('active'); const ts = document.querySelector('.tstingzi');
+                        if (ts) { ts.style.transformOrigin = 'bottom center'; if (tstingziAnim) tstingziAnim.kill(); tstingziAnim = gsap.to(ts, { rotation: 2.5, duration: 3, ease: "sine.inOut", yoyo: !0, repeat: -1 }); }
+                        setTimeout(() => { updateDBox2Pos(); typeWriter2('雪景中的<span class="highlight">温度响应</span>', () => { dTimer2 = setTimeout(() => { dBox2.classList.remove('show'); dTimer2 = null; }, 5000); }); }, 500);
+                    }, 200); isSceneSwitched = !0;
+                } else {
+                    dBox2.classList.remove('show'); clearTimeout(typeTimer2); clearTimeout(dTimer2); scene2.classList.remove('active');
+                    if (tstingziAnim) { tstingziAnim.kill(); tstingziAnim = null; gsap.set(document.querySelector('.tstingzi'), { rotation: 0 }); }
+                    setTimeout(() => { mainScene.classList.remove('hidden'); }, 200); isSceneSwitched = !1;
+                }
+            });
+
+            const swapBtn = document.querySelector('.button4');
+            let isSwapped = !1, isAnimating = !1, swapDialogTimer = null;
+            const centerDialog = document.createElement('div'); centerDialog.id = 'centerDialog';
+            Object.assign(centerDialog.style, { position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%,-50%) scale(0.8)', zIndex: '10000', background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(12px)', borderRadius: '10px', padding: '30px 50px', boxShadow: '0 20px 60px rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.3)', opacity: '0', pointerEvents: 'none', transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)', maxWidth: '400px', textAlign: 'center' });
+            centerDialog.innerHTML = `<div style="font-size:16px;font-weight:300;color:#2c2c2c;letter-spacing:2px;margin-bottom:8px;">道路已更换</div><div style="font-size:10px;color:#888;letter-spacing:1px;font-weight:300;">景观发生动态变化</div>`;
+            document.body.appendChild(centerDialog);
+            function showCenterDialog() {
+                clearTimeout(swapDialogTimer); centerDialog.style.opacity = '1'; centerDialog.style.transform = 'translate(-50%,-50%) scale(1)'; centerDialog.style.pointerEvents = 'auto';
+                swapDialogTimer = setTimeout(() => { centerDialog.style.opacity = '0'; centerDialog.style.transform = 'translate(-50%,-50%) scale(0.8)'; centerDialog.style.pointerEvents = 'none'; swapDialogTimer = null; }, 2500);
+            }
+            swapBtn && swapBtn.addEventListener('click', function () {
+                if (isAnimating) return; isAnimating = !0; const lu = document.querySelector('.lu'); if (!lu) { isAnimating = !1; return; }
+                const newSrc = !isSwapped ? 'images/路2.png' : 'images/路.png'; const clone = lu.cloneNode(!0); clone.src = newSrc;
+                clone.style.cssText = `position:absolute; top:${lu.style.top || '25%'}; left:${lu.style.left || '35%'}; width:${lu.style.width || '40%'}; height:auto; opacity:1; z-index:${lu.style.zIndex || '1'}; pointer-events:none;`;
+                lu.parentElement.insertBefore(clone, lu);
+                const tl = gsap.timeline({ onComplete: () => { lu.remove(); clone.className = lu.className; clone.style.clipPath = 'none'; clone.style.position = 'absolute'; clone.style.pointerEvents = 'none'; isSwapped = !isSwapped; isAnimating = !1; setTimeout(showCenterDialog, 300); } });
+                tl.to(lu, { clipPath: 'inset(0 100% 0 0)', duration: .8, ease: "power2.inOut" });
+            });
+
+            window.addEventListener('resize', () => { if (dBox && dBox.classList.contains('show')) updateDBoxPos(); });
+        });
+    </script>
+</body>
+
+</html>

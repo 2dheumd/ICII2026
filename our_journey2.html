@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About NAU-CHINA | ICII 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 120vh;
+            min-width: 100vh;
+            overflow: hidden;
+            font-family: "Noto Serif SC", "Songti SC", "Georgia", "Times New Roman", serif;
+        }
+
+        .bg-container {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+        }
+
+        .bg-layer {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 40px 340px 40px;
+        }
+
+        /* 统一导航栏样式 */
+        .global-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 80px;
+            background: rgba(244, 236, 216, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #d4c4b7;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            box-sizing: border-box;
+            z-index: 9999;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            font-family: "Noto Serif SC", STSong, serif;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-link:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 4px;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.15));
+        }
+
+        .nav-brand {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #8b2b2b;
+            letter-spacing: 3px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            color: #4a3b32;
+            font-size: 1.05rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            padding: 8px 18px;
+            border-radius: 6px;
+        }
+
+        .nav-item:hover {
+            color: #f9f6ef;
+            background-color: #a84b4b;
+            transform: scale(1.05);
+        }
+
+        /* ================= 高阶下拉菜单样式 ================= */
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .dropdown .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 纯 CSS 绘制精美小箭头 */
+        .dropdown-arrow {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-right: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: rotate(45deg) translateY(-2px);
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown:hover .dropdown-arrow {
+            transform: rotate(225deg) translate(-2px, -2px);
+        }
+
+        .dropdown-content {
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background-color: rgba(250, 246, 235, 0.95);
+            min-width: 240px;
+            box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.12);
+            z-index: 999;
+            border-radius: 8px;
+            border: 1px solid #d4c4b7;
+            backdrop-filter: blur(12px);
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .dropdown:hover .dropdown-content {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-content a {
+            color: #4a3b32 !important;
+            text-decoration: none !important;
+            padding: 16px 20px;
+            display: block;
+            font-size: 0.95rem;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-bottom: 1px dashed rgba(212, 196, 183, 0.6);
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #8b2b2b;
+            color: #f9f6ef !important;
+            letter-spacing: 0.5px;
+        }
+
+        /* [紧接原本的样式代码] */
+        .paper {
+            position: relative;
+            width: 100%;
+            max-width: 880px;
+            max-height: 80%;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(8px);
+            border: 2px solid #54725f;
+            border-radius: 8px;
+            box-shadow: 10px 22px 32px rgba(38, 55, 43, 0.18);
+            padding: 55px 65px;
+            color: #2f4f3a;
+            line-height: 1.95;
+            font-size: 15px;
+            scrollbar-width: thin;
+            scrollbar-color: #7a9e85 transparent;
+            margin-top: 60px;
+        }
+
+        .paper::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .paper::-webkit-scrollbar-thumb {
+            background: #7a9e85;
+            border-radius: 10px;
+        }
+
+        .paper h1 {
+            font-size: 28px;
+            color: #23402c;
+            letter-spacing: 1.5px;
+            text-align: center;
+            margin-bottom: 14px;
+            position: relative;
+            padding-bottom: 16px;
+        }
+
+        .paper h1::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background: #54725f;
+            border-radius: 2px;
+        }
+
+        .paper h2 {
+            font-size: 20px;
+            color: #3a6b4a;
+            letter-spacing: 1px;
+            text-align: center;
+            margin-bottom: 32px;
+            font-weight: normal;
+        }
+
+        .paper h3 {
+            font-size: 17px;
+            color: #23402c;
+            letter-spacing: 0.5px;
+            margin: 30px 0 10px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .paper h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 44px;
+            height: 2px;
+            background: #54725f;
+            border-radius: 2px;
+        }
+
+        .paper p {
+            margin-bottom: 14px;
+            text-align: justify;
+            color: #333;
+        }
+
+        .paper .divider {
+            text-align: center;
+            color: #7a9e85;
+            margin: 28px 0;
+            letter-spacing: 8px;
+        }
+
+        .paper .quote {
+            text-align: center;
+            font-style: italic;
+            color: #3a6b4a;
+            margin: 20px 0;
+            letter-spacing: 0.5px;
+            line-height: 2;
+        }
+
+        .paper .closing {
+            text-align: center;
+            font-weight: bold;
+            color: #23402c;
+            letter-spacing: 2px;
+            margin-top: 26px;
+        }
+
+        .petal-layer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: visible;
+            z-index: 9999;
+        }
+
+        .petal {
+            position: absolute;
+            background: linear-gradient(135deg, #ffe3ec, #f7b8c8);
+            border-radius: 100% 0 100% 0;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        @keyframes petal-fall {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0) rotate(0deg) scale(0.6);
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(var(--dx), var(--dy)) rotate(var(--rot)) scale(1);
+            }
+        }
+
+        .wave-footer {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 300px;
+            z-index: 50;
+            pointer-events: none;
+        }
+
+        .wave-footer .waves {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 90%;
+            overflow: hidden;
+        }
+
+        .wave-footer .wave {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 200%;
+            height: 100%;
+            background-repeat: repeat-x;
+            background-position: 0 bottom;
+            background-size: 50% 100%;
+        }
+
+        .wave-footer .wave1 {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 320' preserveAspectRatio='none'><path d='M0,120 C150,20 350,220 600,120 C850,20 1050,220 1200,120 L1200,320 L0,320 Z' fill='%233a6b4a' fill-opacity='0.35'/></svg>");
+            animation: wave-move 18s linear infinite;
+        }
+
+        .wave-footer .wave2 {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 320' preserveAspectRatio='none'><path d='M0,150 C150,50 350,250 600,150 C850,50 1050,250 1200,150 L1200,320 L0,320 Z' fill='%2354725f' fill-opacity='0.5'/></svg>");
+            animation: wave-move 13s linear infinite;
+            animation-direction: reverse;
+        }
+
+        .wave-footer .wave3 {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 320' preserveAspectRatio='none'><path d='M0,180 C150,80 350,280 600,180 C850,80 1050,280 1200,180 L1200,320 L0,320 Z' fill='%232f4f3a' fill-opacity='0.78'/></svg>");
+            animation: wave-move 9s linear infinite;
+        }
+
+        @keyframes wave-move {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .wave-footer .footer-content {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -10px;
+            height: 60%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 28px;
+            padding: 0 0px 2px 0px;
+            z-index: 2;
+        }
+
+        .wave-footer .footer-media {
+            flex: 0 0 auto;
+            width: 130px;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .wave-footer .footer-media img {
+            max-width: 80%;
+            max-height: 80%;
+            display: block;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+        }
+
+        .wave-footer .footer-note {
+            flex: 0 1 900px;
+            color: #f4f7f2;
+            font-size: 13px;
+            line-height: 1.9;
+            letter-spacing: 0.3px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.55);
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="global-nav">
+        <div class="nav-left">
+            <a href="index.html" class="logo-link">
+                <!-- 注意图片路径，如果图片在 images 文件夹下请保持不变 -->
+                <img src="images/纵向-亮色背景.png" alt="Team Logo" class="nav-logo">
+                <span class="nav-brand">ICII 2026</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="nav-item">Garden Gate</a>
+            <a href="garden-atlas.html" class="nav-item">Garden Atlas</a>
+            <a href="framed-views.html" class="nav-item">Framed Views</a>
+            <a href="echo-pavilion.html" class="nav-item">Echo Pavilion</a>
+
+            <div class="dropdown">
+                <a href="#" class="nav-item">Our Journey <span class="dropdown-arrow"></span></a>
+                <div class="dropdown-content">
+                    <a href="our_journey.html">About the Garden</a>
+                    <a href="our_journey2.html">About the Host Team</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bg-container">
+        <img src="images/背景.png" alt="Background" class="bg-layer">
+    </div>
+
+    <div class="paper" id="paper">
+        <h1>About NAU-CHINA</h1>
+        <h2>Building the First Garden in Nanjing</h2>
+
+        <p>
+            NAU-CHINA 2026 comes from Nanjing Agricultural University. Our project, CellApp, focuses on "programmable
+            protein regulation through engineered liquid–liquid phase separation," attempting to build a tunable,
+            dynamic, and reversible membraneless organelle toolbox in <em>Escherichia coli</em>. The project includes
+            modules for long-term static sequestration, rapid light-controlled reversible condensation, temperature- and
+            pH-responsive regulation, and intein-mediated functional replacement.
+        </p>
+
+        <p>
+            As the initiator of ICII, we are both the organizer of the garden and one of the teams participating in it.
+            We are willing to openly share our own questions, accept suggestions from our partners, and explore together
+            with other teams the broader possibilities of compartmentalization tools in metabolic regulation, protein
+            engineering, education, and social discussion.
+        </p>
+
+        <div class="divider">✦ ✦ ✦</div>
+
+        <h3>Closing: The Garden Gate Stays Open, the Story Is Not Yet Finished</h3>
+
+        <p>
+            From a Silk Road that crossed regions to a garden of condensation grown together by multiple teams, ICII has
+            always believed that the boundaries of science should not become walls against communication, and that
+            cultural differences need not be flattened. It is precisely different spaces, functions, and experiences
+            that give the collaborative network its richer possibilities.
+        </p>
+
+        <p>
+            May every team keep its own scenery here, and also see new distant places through the windows of others; may
+            scattered ideas meet in questions, condense in discussion, and once again move out into the world after
+            shared creation.
+        </p>
+
+        <p class="quote">
+            One team, one scene; gathering and dispersing in order.<br>
+            Bounded yet wall-less; coexisting and co-creating.
+        </p>
+
+        <p class="closing">—— NAU-CHINA 2026</p>
+    </div>
+
+    <div class="petal-layer" id="petalLayer"></div>
+
+    <footer class="wave-footer">
+        <div class="waves">
+            <div class="wave wave1"></div>
+            <div class="wave wave2"></div>
+            <div class="wave wave3"></div>
+        </div>
+        <div class="footer-content">
+            <div class="footer-media">
+                <img src="images/igemlogo.png" alt="ICII illustration">
+            </div>
+            <div class="footer-note">
+                <strong>ICII (Into China, Into iGEM)</strong> is initiated by NAU-CHINA. Copyright and licensing
+                information for team projects, images, and collaborative works displayed on this website is indicated on
+                each individual page. Content involving engineering biology and experimental design is intended solely
+                for scientific exchange and public education, and does not constitute medical, product, or operational
+                advice.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const petalLayer = document.getElementById('petalLayer');
+        const paper = document.getElementById('paper');
+
+        function spawnPetals(x, y, count = 10) {
+            for (let i = 0; i < count; i++) {
+                const petal = document.createElement('span');
+                petal.className = 'petal';
+                petal.style.left = (x + Math.random() * 40 - 20) + 'px';
+                petal.style.top = (y - 6) + 'px';
+                petal.style.setProperty('--dx', (Math.random() * 80 - 40) + 'px');
+                petal.style.setProperty('--dy', (Math.random() * 100 + 120) + 'px');
+                petal.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+                const w = Math.random() * 3 + 6;
+                const h = w * 1.8;
+                petal.style.width = w + 'px';
+                petal.style.height = h + 'px';
+                petal.style.animation = `petal-fall ${0.9 + Math.random() * 1}s ease-in ${Math.random() * 0.15}s forwards`;
+                petalLayer.appendChild(petal);
+                setTimeout(() => petal.remove(), 1800);
+            }
+        }
+
+        let lastTime = 0;
+        paper.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastTime < 260) return;
+            lastTime = now;
+            spawnPetals(e.clientX, e.clientY, 3);
+        });
+    </script>
+</body>
+
+</html>

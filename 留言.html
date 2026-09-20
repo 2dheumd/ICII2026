@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>回声亭 · 跑马灯 | Echo Pavilion</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            background: url(images/bg.webp) no-repeat center center fixed;
+            background-size: cover;
+            font-family: "Noto Serif SC", STSong, serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ================= 顶部导航 ================= */
+        .global-nav {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw;
+            height: 80px;
+            background: rgba(244, 236, 216, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #d4c4b7;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            box-sizing: border-box;
+            z-index: 9999;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+        .nav-left { display: flex; align-items: center; }
+        .logo-link {
+            display: flex; align-items: center; text-decoration: none;
+            gap: 15px; transition: transform 0.3s ease;
+        }
+        .logo-link:hover { transform: scale(1.02); }
+        .nav-logo {
+            height: 60px; width: auto; object-fit: contain;
+            border-radius: 4px;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.15));
+        }
+        .nav-brand {
+            font-size: 1.4rem; font-weight: bold;
+            color: #8b2b2b; letter-spacing: 3px;
+        }
+        .nav-right { display: flex; gap: 40px; align-items: center; }
+        .nav-item {
+            text-decoration: none; color: #4a3b32;
+            font-size: 1.05rem; font-weight: bold; letter-spacing: 2px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative; padding: 8px 18px;
+            border-radius: 6px; overflow: hidden;
+        }
+        .nav-item:hover {
+            color: #f9f6ef; background-color: #a84b4b; transform: scale(1.05);
+        }
+        .nav-petal {
+            position: absolute; width: 6px; height: 6px;
+            background: #ffcce5; border-radius: 10px 0 10px 0;
+            pointer-events: none; z-index: 10;
+        }
+
+        /* ================= 主布局 ================= */
+        .echo-layout {
+            position: absolute;
+            top: 80px;
+            left: 0;
+            right: 0;
+            bottom: 110px;
+            display: flex;
+            gap: 0;
+        }
+
+        /* ---------- 左侧文案区 ---------- */
+        .echo-text-panel {
+            flex: 0 0 460px;
+            height: 100%;
+            padding: 40px 44px 40px 60px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(168, 75, 75, 0.4) transparent;
+        }
+        .echo-text-panel::-webkit-scrollbar { width: 6px; }
+        .echo-text-panel::-webkit-scrollbar-thumb {
+            background: rgba(168, 75, 75, 0.4);
+            border-radius: 10px;
+        }
+
+        .echo-title {
+            font-size: 2.1rem;
+            color: #8b2b2b;
+            letter-spacing: 4px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+        .echo-subtitle {
+            font-size: 0.85rem;
+            color: #9a7b6a;
+            letter-spacing: 3px;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+        }
+
+        .echo-section {
+            margin-bottom: 28px;
+            padding-left: 18px;
+            border-left: 3px solid rgba(168, 75, 75, 0.35);
+        }
+        .echo-section .sec-num {
+            display: inline-block;
+            font-size: 0.75rem;
+            color: #a84b4b;
+            letter-spacing: 2px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+        .echo-section h2 {
+            font-size: 1.05rem;
+            color: #5a3a2a;
+            letter-spacing: 1px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .echo-section p {
+            font-size: 0.9rem;
+            color: #4a3b32;
+            line-height: 1.9;
+            text-align: justify;
+            margin-bottom: 8px;
+        }
+        .echo-section ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 8px;
+        }
+        .echo-section ul li {
+            font-size: 0.88rem;
+            color: #4a3b32;
+            line-height: 1.8;
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .echo-section ul li::before {
+            content: '·';
+            position: absolute;
+            left: 4px;
+            color: #a84b4b;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .status-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 10px;
+        }
+        .status-list span {
+            font-size: 0.82rem;
+            color: #7a5c4a;
+            line-height: 1.7;
+            padding-left: 18px;
+            position: relative;
+        }
+        .status-list span::before {
+            content: '「';
+            position: absolute;
+            left: 0;
+            color: rgba(168, 75, 75, 0.5);
+        }
+        .status-list span::after {
+            content: '」';
+            color: rgba(168, 75, 75, 0.5);
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .action-buttons .act-btn {
+            padding: 8px 18px;
+            font-size: 0.82rem;
+            letter-spacing: 1px;
+            color: #8b2b2b;
+            background: rgba(255, 245, 235, 0.6);
+            border: 1px solid rgba(168, 75, 75, 0.35);
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: "Noto Serif SC", STSong, serif;
+            transition: all 0.25s ease;
+        }
+        .action-buttons .act-btn:hover {
+            background: #a84b4b;
+            color: #fff5eb;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(168, 75, 75, 0.25);
+        }
+
+        /* ---------- 右侧跑马灯层 ---------- */
+        .card-panel {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        #cardLayer {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .card {
+            position: absolute;
+            width: 220px;
+            min-height: 100px;
+            background: url(images/biankuang.webp);
+            background-size: 100% 100%;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 16px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            user-select: none;
+            pointer-events: auto;
+            will-change: transform, left;
+            transition: none;
+        }
+
+        .card-closing {
+            animation: closeOut 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
+            pointer-events: none !important;
+        }
+        @keyframes closeOut {
+            0%   { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.6); }
+        }
+
+        .card-name {
+            font-size: 0.78rem;
+            font-weight: bold;
+            color: #5a2f6e;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            text-align: center;
+            max-width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.5;
+            word-break: break-word;
+            max-width: 100%;
+            font-family: "Noto Serif SC", STSong, serif;
+            background: linear-gradient(145deg, #1f1129, #3d284b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 12px rgba(180, 120, 220, 0.15);
+        }
+
+        .card-close-hint {
+            position: absolute;
+            top: 8px; right: 12px;
+            font-size: 0.6rem;
+            color: rgba(80, 50, 100, 0.3);
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(4px);
+            padding: 1px 10px;
+            border-radius: 30px;
+            border: 0.5px solid rgba(255, 255, 255, 0.3);
+            pointer-events: none;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+        }
+        .card:hover .card-close-hint { opacity: 0.6; }
+
+        /* ================= 底部输入栏 ================= */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0; left: 0;
+            width: 100%;
+            padding: 18px 24px 22px;
+            background: rgba(20, 12, 28, 0.75);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 12px 16px;
+            z-index: 999;
+            box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .bottom-bar .input-group {
+            display: flex;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.2s;
+        }
+        .bottom-bar .input-group:focus-within {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(200, 160, 230, 0.4);
+            box-shadow: 0 0 20px rgba(160, 100, 200, 0.08);
+        }
+        .bottom-bar .name-group    { flex: 0 0 160px; }
+        .bottom-bar .content-group { flex: 1 1 320px; min-width: 180px; }
+
+        .bottom-bar input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 12px 18px;
+            font-size: 0.95rem;
+            color: #f0e6f7;
+            outline: none;
+            letter-spacing: 0.5px;
+            font-family: "Noto Serif SC", STSong, serif;
+        }
+        .bottom-bar input::placeholder {
+            color: rgba(200, 180, 210, 0.5);
+            font-weight: 300;
+        }
+
+        .bottom-bar .btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 10px 22px;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #d4c0e0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            letter-spacing: 0.6px;
+            white-space: nowrap;
+            font-family: "Noto Serif SC", STSong, serif;
+        }
+        .bottom-bar .btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #f5eaff;
+            transform: translateY(-1px);
+            border-color: rgba(200, 160, 230, 0.15);
+        }
+        .bottom-bar .btn-send {
+            background: rgba(160, 110, 200, 0.3);
+            border-color: rgba(180, 130, 220, 0.2);
+            color: #f0e6ff;
+            padding: 10px 30px;
+            font-weight: bold;
+        }
+        .bottom-bar .btn-send:hover { background: rgba(180, 130, 220, 0.45); }
+
+        .bottom-bar .btn-clear {
+            color: #ccb8d8;
+            background: rgba(255, 70, 70, 0.06);
+            border-color: rgba(255, 100, 100, 0.05);
+        }
+        .bottom-bar .btn-clear:hover {
+            background: rgba(255, 80, 80, 0.12);
+            color: #ffcfcf;
+        }
+
+        .bottom-bar .btn-undo {
+            color: #b8e0c8;
+            background: rgba(70, 200, 130, 0.08);
+            border-color: rgba(100, 220, 150, 0.08);
+        }
+        .bottom-bar .btn-undo:hover {
+            background: rgba(80, 220, 140, 0.18);
+            color: #d0ffe0;
+            transform: translateY(-1px);
+        }
+        .bottom-bar .btn-undo:disabled {
+            opacity: 0.3;
+            pointer-events: none;
+            filter: grayscale(0.6);
+        }
+
+        .bottom-bar .counter {
+            color: rgba(200, 180, 215, 0.6);
+            font-size: 0.85rem;
+            letter-spacing: 0.4px;
+            white-space: nowrap;
+        }
+        .bottom-bar .counter span { color: #dcc8ed; font-weight: bold; }
+
+        /* 撤销提示条 */
+        .undo-toast {
+            position: fixed;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(40, 28, 52, 0.92);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(180, 130, 220, 0.25);
+            color: #e8d8f8;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06);
+        }
+        .undo-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+        .undo-toast .undo-msg { color: #d8c8e8; }
+        .undo-toast .undo-msg strong { color: #f0e0ff; }
+
+        .undo-toast .undo-action {
+            background: rgba(160, 120, 220, 0.35);
+            border: 1px solid rgba(180, 140, 240, 0.25);
+            color: #f0e6ff;
+            padding: 6px 20px;
+            border-radius: 60px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+            font-family: "Noto Serif SC", STSong, serif;
+            white-space: nowrap;
+        }
+        .undo-toast .undo-action:hover {
+            background: rgba(180, 140, 240, 0.55);
+            transform: scale(1.05);
+        }
+
+        .undo-toast .undo-timer {
+            color: #b8a0d0;
+            font-size: 0.8rem;
+            font-variant-numeric: tabular-nums;
+            min-width: 28px;
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+            .echo-layout {
+                flex-direction: column;
+                bottom: 130px;
+            }
+            .echo-text-panel {
+                flex: 0 0 auto;
+                max-height: 45%;
+                padding: 24px 22px 16px;
+            }
+            .card-panel {
+                flex: 1;
+            }
+            .echo-title { font-size: 1.6rem; letter-spacing: 2px; }
+            .echo-subtitle { font-size: 0.72rem; letter-spacing: 2px; margin-bottom: 20px; }
+            .echo-section { margin-bottom: 18px; padding-left: 14px; }
+            .echo-section h2 { font-size: 0.95rem; }
+            .echo-section p,
+            .echo-section ul li { font-size: 0.82rem; }
+            .status-list span { font-size: 0.76rem; }
+        }
+
+        @media (max-width: 760px) {
+            .global-nav { padding: 0 18px; }
+            .nav-brand { font-size: 1.1rem; letter-spacing: 1px; }
+            .nav-right { gap: 12px; }
+            .nav-item { font-size: 0.85rem; padding: 6px 10px; letter-spacing: 1px; }
+            .nav-logo { height: 44px; }
+            .bottom-bar { padding: 12px 14px 16px; gap: 10px; }
+            .bottom-bar .name-group { flex: 1 1 100px; }
+            .bottom-bar .content-group { flex: 1 1 160px; }
+            .bottom-bar .btn-send { padding: 10px 20px; }
+            .card { width: 180px; min-height: 90px; }
+            .undo-toast {
+                bottom: 150px;
+                padding: 12px 18px;
+                font-size: 0.8rem;
+                gap: 10px;
+            }
+            .undo-toast .undo-action { padding: 5px 14px; font-size: 0.78rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="global-nav">
+        <div class="nav-left">
+            <a href="index.html" class="logo-link">
+                <img src="images/纵向-亮色背景.png" alt="Team Logo" class="nav-logo">
+                <span class="nav-brand">ICII 2026</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="nav-item">首页</a>
+            <a href="garden-atlas.html" class="nav-item">一城一景</a>
+            <a href="framed-views.html" class="nav-item">借景相望</a>
+            <a href="condensation-workshop.html" class="nav-item">聚景成园</a>
+            <a href="echo-pavilion.html" class="nav-item">回声亭</a>
+            <a href="cellapp.html" class="nav-item">Cell App</a>
+        </div>
+    </nav>
+
+    <div class="echo-layout">
+
+        <!-- ================= 左侧文案区 ================= -->
+        <aside class="echo-text-panel">
+            <h1 class="echo-title">回声亭</h1>
+            <div class="echo-subtitle">Echo Pavilion</div>
+
+            <div class="echo-section">
+                <span class="sec-num">01</span>
+                <h2>每一次回应，都是园林继续生长的条件</h2>
+                <p>
+                    园林并不会在建成的一刻停止变化。一次提问可能打开新的窗口，一条建议可能改变某段路径，一项未解决的问题也可能在未来召集新的伙伴。回声亭收集参与团队与公众的反馈，并记录合作究竟带来了什么变化。
+                </p>
+            </div>
+
+            <div class="echo-section">
+                <span class="sec-num">02</span>
+                <h2>给参与团队的问题</h2>
+                <p>你对 ICII 的配对、交流和展示机制有什么改进建议？</p>
+            </div>
+
+            <div class="echo-section">
+                <span class="sec-num">03</span>
+                <h2>给公众的问题</h2>
+                <ul>
+                    <li>哪一处园景最帮助你理解其背后的科学项目？为什么？</li>
+                    <li>在技术走向现实应用之前，你最关心哪项安全、伦理或社会问题？</li>
+                    <li>你希望下一次在园中看到哪座城市、哪种文化或哪类科学问题？</li>
+                </ul>
+            </div>
+
+            <div class="echo-section">
+                <span class="sec-num">04</span>
+                <h2>从液滴到凝聚体</h2>
+                <p>
+                    每一条留言都会以一枚“液滴”进入回声亭。围绕相近议题的留言将逐渐聚集，形成技术、教育、生物安全、公众接受、产业转化等主题凝聚体。点击凝聚体，可以查看其中的代表性问题、团队回应与后续进展。
+                </p>
+            </div>
+
+            <!-- <div class="echo-section">
+                <span class="sec-num">状态提示语</span>
+                <div class="status-list">
+                    <span>一枚新的回声已落入园中。</span>
+                    <span>这里的观点正在凝聚。</span>
+                    <span>该问题已收到团队回应。</span>
+                    <span>这条建议已进入后续计划。</span>
+                    <span>感谢你帮助这座园继续生长。</span>
+                </div>
+            </div> -->
+<!-- 
+            <div class="echo-section">
+                <span class="sec-num">按钮文字</span>
+                <div class="action-buttons">
+                    <button class="act-btn" onclick="document.getElementById('commentInput').focus()">留下一枚液滴</button>
+                    <button class="act-btn" onclick="alert('观点凝聚功能开发中，敬请期待。')">查看观点凝聚</button>
+                    <button class="act-btn" onclick="alert('团队回应功能开发中，敬请期待。')">阅读团队回应</button>
+                </div>
+            </div> -->
+        </aside>
+
+        <!-- ================= 右侧跑马灯区 ================= -->
+        <div class="card-panel">
+            <div id="cardLayer"></div>
+        </div>
+
+    </div>
+
+    <!-- 撤销提示条 -->
+    <div class="undo-toast" id="undoToast">
+        <span class="undo-msg">已清空 <strong id="undoCount">0</strong> 条回声</span>
+        <button class="undo-action" id="undoBtn">撤销</button>
+        <span class="undo-timer" id="undoTimer">5</span>
+    </div>
+
+    <!-- 底部输入栏 -->
+    <div class="bottom-bar">
+        <div class="input-group name-group">
+            <input type="text" id="nameInput" placeholder="你的名字" maxlength="12" autocomplete="off">
+        </div>
+        <div class="input-group content-group">
+            <input type="text" id="commentInput" placeholder="写下你想说的话..." maxlength="100" autocomplete="off">
+        </div>
+        <button class="btn btn-send" id="sendBtn">留下一枚液滴</button>
+        <button class="btn btn-clear" id="clearBtn">clear</button>
+        <button class="btn btn-undo" id="undoBtn2" disabled>撤销清空</button>
+        <div class="counter">回声 <span id="cardCount">0</span></div>
+    </div>
+
+    <script>
+        /* ================= 顶部导航花瓣 ================= */
+        const globalNavItems = gsap.utils.toArray('.nav-item');
+        function createGlobalNavPetal(parent) {
+            const petal = document.createElement('div');
+            petal.classList.add('nav-petal');
+            parent.appendChild(petal);
+            const startX = Math.random() * parent.offsetWidth;
+            const startY = -10;
+            gsap.set(petal, { x: startX, y: startY, rotation: Math.random() * 360, scale: Math.random() * 0.5 + 0.5 });
+            gsap.to(petal, {
+                y: parent.offsetHeight + 10, x: startX + (Math.random() * 20 - 10),
+                rotation: "+=" + (Math.random() * 200 - 100), opacity: 0,
+                duration: 0.5 + Math.random() * 0.4, ease: "power1.in",
+                onComplete: () => petal.remove()
+            });
+        }
+        globalNavItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                for (let j = 0; j < 6; j++) { setTimeout(() => { createGlobalNavPetal(item); }, j * 60); }
+            });
+        });
+
+        /* ================= 回声亭：跑马灯 + 撤销清空 ================= */
+        (function () {
+            "use strict";
+
+            const STORAGE_KEY = 'icii_echo_comments';
+
+            const layer     = document.getElementById('cardLayer');
+            const nameInput = document.getElementById('nameInput');
+            const commentInput = document.getElementById('commentInput');
+            const sendBtn   = document.getElementById('sendBtn');
+            const clearBtn  = document.getElementById('clearBtn');
+            const countEl   = document.getElementById('cardCount');
+            const undoBtn2  = document.getElementById('undoBtn2');
+
+            const undoToast   = document.getElementById('undoToast');
+            const undoCountEl = document.getElementById('undoCount');
+            const undoBtn     = document.getElementById('undoBtn');
+            const undoTimer   = document.getElementById('undoTimer');
+
+            const UNDO_DURATION = 5;
+
+            const liveCards = new Map();
+            let undoSnapshot = null;
+
+            function loadComments() {
+                try {
+                    const raw = localStorage.getItem(STORAGE_KEY);
+                    return raw ? JSON.parse(raw) : [];
+                } catch (e) {
+                    console.warn('读取评论失败', e);
+                    return [];
+                }
+            }
+            function saveComments(list) {
+                try {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+                } catch (e) {
+                    console.warn('保存评论失败', e);
+                }
+            }
+
+            function randomInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+            function randomFloat(min, max) { return Math.random() * (max - min) + min; }
+
+            function startMarquee(el, id) {
+                const panel = document.querySelector('.card-panel');
+                const panelW = panel.clientWidth;
+                const panelH = panel.clientHeight;
+
+                const cardW = el.offsetWidth || 220;
+                const cardH = el.offsetHeight || 100;
+
+                const minTop = 10;
+                const maxTop = Math.max(minTop, panelH - cardH - 10);
+                const top = randomInt(minTop, maxTop);
+
+                const startLeft = panelW + 20;
+                const endLeft = -cardW - 20;
+
+                el.style.left = startLeft + 'px';
+                el.style.top  = top + 'px';
+                el.style.opacity = '1';
+                el.style.pointerEvents = 'auto';
+
+                const duration = randomFloat(12, 20);
+                const delay = randomFloat(0, 1.5);
+
+                const tween = gsap.to(el, {
+                    left: endLeft,
+                    duration: duration,
+                    delay: delay,
+                    ease: 'none',
+                    onComplete: () => {
+                        if (liveCards.has(id)) {
+                            startMarquee(el, id);
+                        }
+                    }
+                });
+
+                const rec = liveCards.get(id);
+                if (rec) {
+                    if (rec.tween) rec.tween.kill();
+                    rec.tween = tween;
+                }
+            }
+
+            function createCardElement(item) {
+                const el = document.createElement('div');
+                el.className = 'card';
+                el.dataset.id = item.id;
+
+                el.style.left = '100%';
+                el.style.top = '200px';
+
+                const nameEl = document.createElement('div');
+                nameEl.className = 'card-name';
+                nameEl.textContent = item.name;
+
+                const textEl = document.createElement('div');
+                textEl.className = 'card-text';
+                textEl.textContent = item.text;
+
+                const hint = document.createElement('span');
+                hint.className = 'card-close-hint';
+                hint.textContent = '✕ 关闭';
+
+                el.appendChild(nameEl);
+                el.appendChild(textEl);
+                el.appendChild(hint);
+
+                el.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    removeComment(item.id);
+                });
+
+                el.addEventListener('mouseenter', () => {
+                    const rec = liveCards.get(item.id);
+                    if (rec && rec.tween) rec.tween.pause();
+                });
+                el.addEventListener('mouseleave', () => {
+                    const rec = liveCards.get(item.id);
+                    if (rec && rec.tween) rec.tween.resume();
+                });
+
+                layer.appendChild(el);
+
+                liveCards.set(item.id, { el, tween: null });
+
+                requestAnimationFrame(() => {
+                    startMarquee(el, item.id);
+                });
+
+                return el;
+            }
+
+            function cleanupCard(id) {
+                const rec = liveCards.get(id);
+                if (!rec) return;
+
+                if (rec.tween) rec.tween.kill();
+
+                if (rec.el && rec.el.parentNode) {
+                    rec.el.classList.add('card-closing');
+                    rec.el.addEventListener('animationend', () => rec.el.remove(), { once: true });
+                    setTimeout(() => rec.el.remove(), 300);
+                }
+                liveCards.delete(id);
+            }
+
+            function removeComment(id) {
+                cleanupCard(id);
+                const list = loadComments().filter(i => i.id !== id);
+                saveComments(list);
+                updateCounter(list.length);
+            }
+
+            function clearAll() {
+                const currentList = loadComments();
+                if (currentList.length === 0) return;
+
+                if (undoSnapshot) cancelUndo();
+
+                undoSnapshot = {
+                    list: JSON.parse(JSON.stringify(currentList)),
+                    timer: null,
+                    interval: null,
+                    remaining: UNDO_DURATION
+                };
+
+                undoCountEl.textContent = currentList.length;
+                undoTimer.textContent = UNDO_DURATION;
+                undoToast.classList.add('show');
+                undoBtn2.disabled = false;
+
+                undoSnapshot.remaining = UNDO_DURATION;
+                undoSnapshot.interval = setInterval(() => {
+                    undoSnapshot.remaining--;
+                    undoTimer.textContent = undoSnapshot.remaining;
+                    if (undoSnapshot.remaining <= 0) {
+                        cancelUndo();
+                    }
+                }, 1000);
+
+                undoSnapshot.timer = setTimeout(() => {
+                    cancelUndo();
+                }, UNDO_DURATION * 1000);
+
+                Array.from(liveCards.keys()).forEach(id => {
+                    cleanupCard(id);
+                });
+                liveCards.clear();
+
+                saveComments([]);
+                updateCounter(0);
+            }
+
+            function performUndo() {
+                if (!undoSnapshot || !undoSnapshot.list.length) return;
+
+                const restoreList = undoSnapshot.list;
+                cancelUndo();
+
+                saveComments(restoreList);
+
+                restoreList.forEach((item, i) => {
+                    setTimeout(() => createCardElement(item), i * 80);
+                });
+
+                updateCounter(restoreList.length);
+            }
+
+            function cancelUndo() {
+                if (undoSnapshot) {
+                    if (undoSnapshot.timer) clearTimeout(undoSnapshot.timer);
+                    if (undoSnapshot.interval) clearInterval(undoSnapshot.interval);
+                    undoSnapshot = null;
+                }
+                undoToast.classList.remove('show');
+                undoBtn2.disabled = true;
+            }
+
+            function updateCounter(n) {
+                if (typeof n !== 'number') n = liveCards.size;
+                countEl.textContent = n;
+            }
+
+            function addComment(name, text) {
+                const list = loadComments();
+                const item = {
+                    id: Date.now() + '_' + Math.random().toString(36).slice(2, 8),
+                    name: name,
+                    text: text,
+                    time: Date.now()
+                };
+                list.push(item);
+                saveComments(list);
+
+                createCardElement(item);
+                updateCounter(list.length);
+            }
+
+            function submit() {
+                const name = nameInput.value.trim() || '匿名';
+                const text = commentInput.value.trim();
+                if (!text) { commentInput.focus(); return; }
+
+                addComment(name, text);
+                commentInput.value = '';
+                commentInput.focus();
+            }
+
+            sendBtn.addEventListener('click', submit);
+            commentInput.addEventListener('keydown', e => {
+                if (e.key === 'Enter') { e.preventDefault(); submit(); }
+            });
+            nameInput.addEventListener('keydown', e => {
+                if (e.key === 'Enter') { e.preventDefault(); commentInput.focus(); }
+            });
+            clearBtn.addEventListener('click', clearAll);
+            undoBtn.addEventListener('click', performUndo);
+            undoBtn2.addEventListener('click', performUndo);
+
+            function init() {
+                const list = loadComments();
+
+                list.forEach((item, i) => {
+                    setTimeout(() => createCardElement(item), i * 300);
+                });
+
+                updateCounter(list.length);
+                commentInput.focus();
+            }
+
+            if (document.readyState === 'complete') init();
+            else window.addEventListener('load', init);
+        })();
+    </script>
+</body>
+
+</html>

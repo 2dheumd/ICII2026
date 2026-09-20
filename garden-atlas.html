@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden Atlas | 一城一景</title>
+    <link rel="stylesheet" href="atlas-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <nav class="global-nav">
+        <div class="nav-left">
+            <a href="index.html" class="logo-link">
+                <!-- 注意图片路径，如果图片在 images 文件夹下请保持不变 -->
+                <img src="images/纵向-亮色背景.png" alt="Team Logo" class="nav-logo">
+                <span class="nav-brand">ICII 2026</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="nav-item">Garden Gate</a>
+            <a href="garden-atlas.html" class="nav-item">Garden Atlas</a>
+            <a href="framed-views.html" class="nav-item">Framed Views</a>
+            <a href="echo-pavilion.html" class="nav-item">Echo Pavilion</a>
+
+            <div class="dropdown">
+                <a href="#" class="nav-item">Our Journey <span class="dropdown-arrow"></span></a>
+                <div class="dropdown-content">
+                    <a href="our_journey.html">About the Garden</a>
+                    <a href="our_journey2.html">About the Host Team</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bg-container">
+        <img src="images/背景.png" alt="Background" class="bg-layer">
+    </div>
+
+    <!-- 左侧导航栏 -->
+    <aside class="sidebar-nav">
+        <ul class="nav-list">
+            <li><a href="#team-bywa">BYWA</a></li>
+            <li><a href="#team-cau">CAU-China</a></li>
+            <li><a href="#team-cuhksz">CUHKSZ</a></li>
+            <li><a href="#team-hku">HKU-HongKong</a></li>
+            <li><a href="#team-hubu">HUBU-WUHAN</a></li>
+            <li><a href="#team-hunanu">HunanU</a></li>
+            <li><a href="#team-hust">HUST-China</a></li>
+            <li><a href="#team-hzau">HZAU-China</a></li>
+            <li><a href="#team-nefu">NEFU-China 2026</a></li>
+            <li><a href="#team-nnu">NNU-China ICII</a></li>
+            <li><a href="#team-nnu-nanjing">NNU-Nanjing-China</a></li>
+            <li><a href="#team-shsbnu">SHSBNU-CHINA</a></li>
+            <li><a href="#team-sustech-bio">SUSTech-BIO</a></li>
+            <li><a href="#team-sustech-med">SUSTech-MED</a></li>
+            <li><a href="#team-tjusls">TJUSLS_China</a></li>
+            <li><a href="#team-ustc">USTC-iGEM</a></li>
+            <li><a href="#team-zjut">ZJUT-China</a></li>
+        </ul>
+        <div class="sidebar-illustration">
+            <img src="images/雪景.png" alt="Snow Landscape">
+        </div>
+    </aside>
+
+    <main class="gallery-wrapper">
+        <section class="intro-section">
+            <h2>Every Scene Has Its Source</h2>
+            <p>The vitality of a garden comes from the differences between its scenes. Every participating team builds
+                an exclusive "Garden Landscape" here, responding to real-world challenges with their unique cultural
+                roots. Along this atlas, observe the science, find the roots, open a window, and follow the corridor.
+            </p>
+        </section>
+
+        <div class="cards-container">
+
+            <!-- 1. BYWA -->
+            <article class="team-card" id="team-bywa">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">BYWA</span><span class="team-location"></span></div>
+                    <h3 class="project-title">Insert Project Title Here</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>Engineers E. coli to produce melatonin, using cut flowers as a postharvest senescence model.
+                            Melatonin 2.0 improves pathway modularity, cofactors, tryptophan flux.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>Chinese culture: flowers symbolize resilience, refinement, integrity, prosperity; their brief
+                            bloom captures transience. CAU-China reinterprets extending flowers’ meaningful life through
+                            biotechnology, echoing resourcefulness and waste avoidance.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">MelatoninBiosynthesis</span><span
+                                class="tag">PostharvestPreservation</span></div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn" data-team="bywa">Approach
+                            this Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 2. CAU-China -->
+            <article class="team-card" id="team-cau">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">CAU-China</span><span class="team-location">Beijing,
+                            China</span></div>
+                    <h3 class="project-title">Insert Project Title Here</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>Engineers S. cerevisiae to detect mold VOCs before visible growth via mammalian olfactory
+                            receptors and a GPA1/Gaolf chimera. A multi-receptor array triggers mStayGold fluorescence;
+                            a portable LED/smartphone detector enables early warning in small granaries, reducing
+                            postharvest loss and mycotoxin risk.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>Grain symbolizes national stability. Beijing’s 800-year granary culture used airflow and
+                            temperature control to prevent mold. Fungal Sentinel carries this legacy into synthetic
+                            biology: a yeast biosensor for household granaries.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">FungalSentinel</span><span
+                                class="tag">VOCBiosensor</span></div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn" data-team="cau">Approach this
+                            Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 3. CUHKSZ -->
+            <article class="team-card" id="team-cuhksz">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">CUHKSZ plantSOS</span><span
+                            class="team-location">Shenzhen, China</span></div>
+                    <h3 class="project-title">PlantSOS: Plant Stress Biosensor</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>CUHKSZ engineers <em>E. coli</em> biosensors detecting salicylic acid, jasmonic acid, and
+                            abscisic acid in leaf fluid, signaling plant stress before wilting. A cell-free diagnostic
+                            kit ensures containment and affordability. Crowdsourced measurements aggregate into a
+                            high-resolution network mapping underground plant health.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>Shenzhen’s tech pulse meets Lingnan’s silent ecological rhythms. The biosensor harmonizes
+                            ancient reverence for land with modern connectivity, translating plant chemical cues into
+                            visible fluorescence. Crowdsourced data transforms citizens into stewards of a living
+                            environmental network.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">PlantStressBiosensor</span><span
+                                class="tag">CellFreeDiagnostics</span></div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn" data-team="cuhksz">Approach
+                            this Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 4. HKU-HongKong -->
+            <article class="team-card" id="team-hku">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">HKU-HongKong</span><span class="team-location">Hong
+                            Kong, China</span></div>
+                    <h3 class="project-title">Smart Hydrogel for Chronic Wound Healing</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>HKU targets chronic wounds in Hong Kong's aging population. Persistent inflammation driven by
+                            TNF-α, IL-6, and COX-2 via TLR4/NF-κB is interrupted using de novo proteins designed by
+                            RFdiffusion, ProteinMPNN, AlphaFold3, and MD. An NO-responsive smart hydrogel delivers
+                            inhibitors only during hyperinflammation, breaking the cycle and promoting repair.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>Hong Kong's TCM tradition used herbal plasters to regulate wounds, not aggressively excise
+                            tissue—"supporting healthy Qi to expel pathogenic factors." HKU modernizes this mild,
+                            regenerative philosophy: de novo peptides precisely block TLR4, suppressing
+                            hyperinflammation while preserving baseline immunity within an NO-responsive hydrogel.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">ChronicWoundHealing</span><span
+                                class="tag">SmartHydrogel</span></div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn" data-team="hku">Approach this
+                            Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 5. HUBU-WUHAN -->
+            <article class="team-card" id="team-hubu">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">HUBU-WUHAN</span><span class="team-location">Wuhan,
+                            China</span></div>
+                    <h3 class="project-title">Whole-Cell Biosensor for Naphthalene</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>HUBU-WUHAN develops a whole-cell biosensor for naphthalene, a persistent PAH. The system
+                            integrates fluorescent detection with engineered metabolic degradation pathways into one
+                            platform. This portable, low-cost tool enables on-site screening, transforming invisible
+                            pollutants into visible, actionable data for communities.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>Rooted in reverence for water, the Yangtze is Wuhan's lifeblood. The philosophy of tian ren
+                            he yi reminds us that human well-being is inseparable from environmental health. The
+                            biosensor acts as a modern guardian of the river, bridging ancient wisdom and contemporary
+                            action through collective responsibility.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">NaphthaleneBiosensor</span><span
+                                class="tag">PAHDetection</span></div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn" data-team="hubu">Approach
+                            this Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 6. HunanU -->
+            <article class="team-card" id="team-hunanu">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">HunanU</span><span class="team-location">Changsha,
+                            China</span></div>
+                    <h3 class="project-title">NariViva: Living Biotherapeutic for GSM</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>NariViva engineers probiotic bacteria to continuously produce naringenin locally, treating
+                            genitourinary syndrome of menopause. This living biotherapeutic provides anti-inflammatory,
+                            mucosa-protective, and microbiome-restoring effects, offering a sustainable alternative to
+                            hormonal or topical therapies.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>Pomelo (wendan) is deeply linked to women in Chinese culture—named after a woman, symbolizing
+                            blessings and used for purification. Naringenin from pomelo peel offers weak estrogen-like
+                            activity. HunanU modernizes this bond through engineered probiotics for women's health.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">NariViva</span><span
+                                class="tag">ProbioticTherapy</span></div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn" data-team="hunanu">Approach
+                            this Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 7. HUST-China -->
+            <article class="team-card" id="team-hust">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">HUST-China</span><span class="team-location">Wuhan,
+                            China</span></div>
+                    <h3 class="project-title">Diancui-Mimetic Structural Color Materials</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>HUST-China engineers a green closed loop using waste cotton textiles. Enzymatic
+                            saccharification, bacterial cellulose synthesis, cellulose nanocrystal self-assembly, and
+                            structural protein design replicate kingfisher feather structural color. The resulting
+                            Diancui-mimetic material is animal-free, mass-producible, and degradable.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>Rooted in Diancui, a Chinese National Intangible Cultural Heritage of Ming-Qing royal
+                            jewelry. The project inherits its iridescent aesthetic and craft logic while ending animal
+                            harm. It echoes "harmony between man and nature," reviving endangered craft through
+                            synthetic biology.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">DiancuiMimetic</span><span
+                                class="tag">StructuralColor</span></div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn" data-team="hust">Approach
+                            this Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 8. HZAU-China -->
+            <article class="team-card" id="team-hzau">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">HZAU-China</span><span class="team-location">Wuhan,
+                            China</span></div>
+                    <h3 class="project-title">PurrFit: Feline Obesity Management</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>HZAU-China engineers <em>B. thetaiotaomicron</em> to express BSH, converting conjugated bile
+                            acids into free bile acids and modulating bile acid–FXR signaling to raise endogenous FGF21.
+                            A feline FGF21-ABD fusion protein promotes white adipose browning and UCP1 expression.
+                            Conjugation-based delivery, CAST integration, DCA-responsive feedback, and a
+                            nitrogen-dependent kill switch provide targeted, safe, and sustained weight management.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>No cultural association document was provided for HZAU-China. Please upload the team’s
+                            Culture file to complete this section.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">PurrFit</span><span class="tag">FelineObesity</span>
+                        </div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn" data-team="hzau">Approach
+                            this Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 9. NEFU-China 2026 -->
+            <article class="team-card" id="team-nefu">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">NEFU-China</span><span class="team-location">Harbin,
+                            China</span></div>
+                    <h3 class="project-title">AAAgri: Waste Lipids to Chrysanthemic Acid</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>NEFU-China engineers <em>Yarrowia lipolytica</em> to convert waste lipids into chrysanthemic
+                            acid, an eco-friendly pyrethrin precursor. The AAA strategy combines accurate green pest
+                            control, alternative waste-lipid upcycling as sole carbon source, and AI-assisted protein
+                            engineering of MVA pathway enzymes. The platform aims for sustainable biomanufacturing and a
+                            transferable high-DMAPP module for isoprenoid biosynthesis.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>Inspired by millennia of Chinese pest control—from the <em>Book of Songs</em> to Yao Chong's
+                            locust campaign—the project follows the ecological worldview of <em>Dao fa zi ran</em>:
+                            understand nature's rules and work with them. It continues the journey of pyrethrum from
+                            flower fields to the fermenter, renewing traditional wisdom of balance through synthetic
+                            biology.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">ChrysanthemicAcid</span><span
+                                class="tag">WasteLipidUpcycling</span></div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn" data-team="nefu">Approach
+                            this Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 10. NNU-China ICII -->
+            <!-- 10. NNU-CHINA -->
+            <article class="team-card" id="team-nnu">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">NNU-CHINA</span><span class="team-location">Nanjing,
+                            China</span></div>
+                    <h3 class="project-title">Biosynthetic Indigo for Sustainable Dyeing</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>NNU-CHINA addresses the environmental and health threats of chemical indigo production, which
+                            relies on toxic reagents like aniline and hydrocyanic acid. The team engineers <em>E.
+                                coli</em> BL21(DE3) to construct a complete indigo biosynthesis pathway, enhancing
+                            efficiency and strain stability through CRISPR-associated transposase (CAST) and spatial
+                            compartmentalization. This clean route aims to reduce the textile industry's footprint and
+                            provide a universal framework for high-value compounds.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>Indigo dyeing is a Chinese intangible cultural heritage, represented by Nantong blue calico
+                            and traditional tie-dye. Plant-derived indigo is limited by yield and season, while chemical
+                            synthesis requires harsh conditions. Biosynthetic indigo, molecularly identical, offers a
+                            sustainable raw material compatible with manual dyeing, supporting heritage crafts without
+                            farmland. The team integrates this heritage into science outreach, empowering tradition
+                            through biotechnology.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">BiosyntheticIndigo</span><span
+                                class="tag">CulturalHeritage</span></div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn" data-team="nnu">Approach this
+                            Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 11. NNU-Nanjing-China -->
+            <article class="team-card" id="team-nnu-nanjing">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">NNU-Nanjing-China</span><span
+                            class="team-location">Nanjing, China</span></div>
+                    <h3 class="project-title">ShellEvo: Chitooligosaccharide Production</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>Crustacean shell waste burdens the environment while efficient biocatalysts for
+                            chitooligosaccharide (COS) production are limited. ShellEvo combines chitosanase mining from
+                            extreme environments with rational protein engineering to improve activity and selectivity.
+                            It converts shell-derived chitosan into bioactive COS under mild conditions, reducing
+                            chemical use and enabling green valorization.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>Traditional Chinese culture emphasizes medicinal-edible homology and preventive treatment,
+                            favoring daily health maintenance over aggressive therapy. COS aligns with this "treating
+                            disease before it arises" philosophy. Ancient materia medica records crustaceans as
+                            medicine; NNU-Nanjing-China uses biotechnology to unlock their modern value.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">ShellEvo</span><span
+                                class="tag">Chitooligosaccharide</span></div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn"
+                            data-team="nnu-nanjing">Approach this Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 12. SHSBNU-CHINA -->
+            <article class="team-card" id="team-shsbnu">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">SHSBNU-CHINA</span><span
+                            class="team-location">China</span></div>
+                    <h3 class="project-title">BLISS: Brazzein Sweet Protein Production</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>SHSBNU-CHINA explores brazzein, a natural sweet protein, as a low-calorie alternative to
+                            sugar. The team designs expression constructs in <em>E. coli</em>, compares fusion
+                            strategies for improved production and purification, and uses SDS-PAGE and concentration
+                            analysis to evaluate constructs. Protein engineering and computational modeling guide future
+                            variants, while Human Practices and the PrintScope educational microscope connect the
+                            science to real-world needs.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>No cultural association document was provided for SHSBNU-CHINA. Please upload the team’s
+                            Culture file to complete this section.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">BLISS</span><span class="tag">Brazzein</span></div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn" data-team="shsbnu">Approach
+                            this Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 13. SUSTech-BIO -->
+            <!-- 13. SUSTech-BIO -->
+            <article class="team-card" id="team-sustech-bio">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">SUSTech-BIO</span><span
+                            class="team-location">Shenzhen, China</span></div>
+                    <h3 class="project-title">ORCA: RNA Editing for Alzheimer's Disease</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>ORCA targets APOE4 mRNA with therapeutic RNA editing, shifting the disease-associated protein
+                            toward a safer APOE3-like form without permanent DNA changes. Wet-lab experiments and
+                            computational modeling optimize editor structure, predict off-target effects, and guide
+                            delivery design. Control modules enhance specificity in disease-relevant cells, offering a
+                            modular RNA editing framework.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>Suzhou gardens preserve cultural memory; orcas transmit ecological knowledge across
+                            generations. RNA editing mirrors the garden principle of "changing scenery with every
+                            step"—refining molecular messages without altering the DNA blueprint. ORCA connects
+                            traditional wisdom with biotechnology to protect personal memory, the essence of who we are.
+                        </p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">ORCA</span><span class="tag">RNAEditing</span></div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn"
+                            data-team="sustech-bio">Approach
+                            this Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 14. SUSTech-MED -->
+            <!-- 14. SUSTech-MED -->
+            <article class="team-card" id="team-sustech-med">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">SUSTech-MED</span><span
+                            class="team-location">Shenzhen, China</span></div>
+                    <h3 class="project-title">Intranasal Probiotic for Autism Intervention</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>SUSTech-MED engineers <em>Lactobacillus plantarum</em> L168 to biosynthesize sulforaphane and
+                            N-acetylcysteine, degrade glutamine, and convert brain ammonia into BCAAs. Delivered
+                            non-invasively via the nasal route to bypass the blood-brain barrier, the system targets the
+                            neural microenvironment, reducing ammonia toxicity, neuroinflammation, and oxidative stress
+                            to relieve core autism symptoms.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>The Chinese white dolphin—sensitive, socially communicative, and dependent on a clean
+                            environment—mirrors the inner world of autistic individuals. Its graceful barrier-crossing
+                            symbolizes nose-to-brain delivery bypassing the blood-brain barrier. Multi-pathway
+                            regulation gently restores neural balance, integrating synthetic biology with humanistic
+                            care and respect for dignity.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">AutismIntervention</span><span
+                                class="tag">IntranasalProbiotic</span></div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn"
+                            data-team="sustech-med">Approach this Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 15. TJUSLS_China -->
+            <article class="team-card" id="team-tjusls">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">TJUSLS-China</span><span
+                            class="team-location">Tianjin, China</span></div>
+                    <h3 class="project-title">PUReCycle: Polyurethane Biodegradation</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>PUReCycle tackles MDI-based polyether polyurethane solid waste, which resists natural
+                            degradation and causes pollution through landfill and incineration. Using metagenomic
+                            mining, the team identifies novel PURases, expresses them in <em>E. coli</em>, rationally
+                            engineers AbPURase, and discovers PUC-series enzymes. Screened mutants with enhanced
+                            activity provide a biological route for polyurethane recycling.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>Inspired by the <em>Tao Te Ching</em>—"constantly good at rescuing things, leaving no
+                            discarded objects"—and <em>Qi Min Yao Shu</em>'s circular practices, the project translates
+                            "turning waste into treasure" into molecular biology. It applies ancient ecological wisdom
+                            to rebuild material cycles, offering a synthetic biology alternative to polluting disposal.
+                        </p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">PUReCycle</span><span
+                                class="tag">PolyurethaneBiodegradation</span></div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn" data-team="tjusls">Approach
+                            this Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 16. USTC-iGEM -->
+            <article class="team-card" id="team-ustc">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">USTC</span><span class="team-location">Hefei,
+                            China</span></div>
+                    <h3 class="project-title">TEMPO: Programmable Biological Timing</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>TEMPO is a modular synthetic timing system combining an oscillator, binary counter, and
+                            effector. Oscillator pulses define discrete units of biological time; an integrate-RDF
+                            counter records cycles into stable DNA states. Once a set count is reached, a state-specific
+                            promoter activates timed protein expression or programmed cell elimination. Modeling guides
+                            design for autonomous, programmable therapeutic and biocontainment systems.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>Traditional Chinese timekeeping used Shichen and the Twenty-Four Solar Terms—organizing time
+                            through recurring natural rhythms rather than abstract numbers. TEMPO mirrors this logic:
+                            molecular oscillations become time units, a counter accumulates cycles, and accumulated
+                            rhythm triggers action. Both understand time through observable cycles, memory, and
+                            scheduled activity.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">TEMPO</span><span class="tag">BiologicalTimer</span>
+                        </div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn" data-team="ustc">Approach
+                            this Scene</button></div>
+                </div>
+            </article>
+
+            <!-- 17. ZJUT-China -->
+            <article class="team-card" id="team-zjut">
+                <div class="card-content">
+                    <div class="team-meta"><span class="team-name">ZJUT-China</span><span
+                            class="team-location">Hangzhou, China</span></div>
+                    <h3 class="project-title">G-SCOUT: Probiotic CRC Screening</h3>
+                    <div class="concept-block">
+                        <h4>Scientific Observation</h4>
+                        <p>ZJUT-China engineers probiotic <em>E. coli</em> Nissle 1917 with modules for gut
+                            colonization, biomarker sensing, and chromogenic reporting. It detects <em>Fusobacterium
+                                nucleatum</em> co-aggregation and elevated ethanolamine, producing a visible stool
+                            pigment. This non-invasive, low-cost home test enables early colorectal cancer detection
+                            without colonoscopy, improving compliance and survival outcomes.</p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Cultural Roots</h4>
+                        <p>Zhejiang's high-salt, low-fiber culinary tradition contributes to high CRC rates. Inspired by
+                            <em>zhi wei bing</em>—preventing disease before it arises—G-SCOUT turns a harmless probiotic
+                            into a living gut sentinel, much like ancestors used natural indicators of spoilage. It
+                            preserves culinary heritage while democratizing early screening, fusing ancient preventive
+                            wisdom with modern biotechnology.
+                        </p>
+                    </div>
+                    <div class="concept-block">
+                        <h4>Opening a Window</h4>
+                        <div class="tags-wrapper"><span class="tag">G-SCOUT</span><span
+                                class="tag">ProbioticScreening</span></div>
+                    </div>
+                    <div class="card-actions"><button class="btn btn-outline approach-btn" data-team="zjut">Approach
+                            this Scene</button></div>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+
+    <div id="modal-nau" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Nanjing</span>
+                    <h2>NAU-CHINA</h2>
+                    <p class="project-title">CellApp</p>
+                </div>
+                <img src="images/placeholder-team.jpg" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>Insert the full team introduction text here...</p>
+                    <h3>Project Description</h3>
+                    <p>Insert the full project description text here...</p>
+                    <h3>Cultural Connection</h3>
+                    <p>Insert the full cultural connection text here...</p>
+                </div>
+                <img src="images/placeholder-poster.jpg" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. BYWA 弹窗 -->
+    <div id="modal-bywa" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Location</span>
+                    <h2>BYWA</h2>
+                </div>
+                <img src="images/BWYA团队合照.jpg" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>Team BWYA is made up of students in Grades 9 to 11 from different schools, cities, and
+                        backgrounds. We have different interests, strengths, and ways of looking at problems, but we
+                        came together with a simple idea: to build something meaningful and see how far we could take
+                        it. For us, iGEM is not just a competition or a research project. It is a chance to sit around
+                        the same table, argue about experiments, redesign ideas, interview people, learn unexpected
+                        skills, and turn conversations into a real project. We do not expect one student project to
+                        change the world, but we believe small things matter. If our work makes one problem clearer,
+                        pushes one idea further, or makes someone else curious, it is already worthwhile. Perhaps the
+                        biggest change happens to us: we learn that science is not only in laboratories or textbooks,
+                        but something people do together.</p>
+                    <h3>Project Description</h3>
+                    <p>Our project explores synthetic biology for postharvest preservation by engineering <em>E.
+                            coli</em> to produce melatonin. Harvested fruits, vegetables, and flowers remain
+                        biologically active and undergo senescence, water loss, stress, and microbial deterioration,
+                        causing substantial postharvest loss. We chose cut flowers as a model because their senescence
+                        is rapid, visible, and quantifiable through vase life, wilting, and appearance. Melatonin,
+                        involved in plant stress responses and senescence regulation, may improve postharvest quality.
+                        We engineered <em>E. coli</em> through two generations. Melatonin 1.0 established the
+                        heterologous pathway and identified constraints such as precursor availability, hydroxylation
+                        cofactors, and competition from native tryptophan metabolism. Melatonin 2.0 redesigned the
+                        pathway into a modular multi-gene system, strengthened cofactor synthesis and regeneration, and
+                        deleted <em>trpR</em>, <em>tnaA</em>, and <em>yddG</em> to redirect tryptophan flux. We used
+                        HPLC to evaluate melatonin production and tested a cell-removed, non-living fermentation product
+                        on cut flowers. Cut flowers are not the endpoint, but a model for broader postharvest
+                        agriculture, connecting metabolic engineering, microbial fermentation, and supply-chain needs to
+                        reduce loss and improve resource efficiency.</p>
+                    <h3>Cultural Connection</h3>
+                    <p>Flowers have long carried meanings far beyond decoration in Chinese culture. Plum blossoms
+                        symbolize resilience, orchids refinement, chrysanthemums integrity, and peonies prosperity.
+                        Flowers appear throughout poetry, painting, festivals, gardens, and gift-giving, acting as
+                        carriers of emotion, memory, and symbolism. Yet their beauty is temporary, and their short
+                        blooming period has become a recurring theme in Chinese literature and aesthetics, reflecting
+                        the tension between appreciating a moment and watching it disappear. Our project connects with
+                        this tradition not by reproducing an ancient preservation technique, but by reinterpreting the
+                        idea of extending the meaningful life of flowers through modern biotechnology. We engineer
+                        microorganisms to produce melatonin and test whether it can delay postharvest senescence in cut
+                        flowers, bringing a modern biological perspective to an old human desire: keeping flowers fresh
+                        for a little longer. The project also reflects a deeply rooted cultural idea: making full use of
+                        resources and avoiding unnecessary waste. Flowers require land, water, energy, transportation,
+                        and labor before reaching consumers; when they deteriorate rapidly, much of that investment is
+                        lost. By using cut flowers as a model for postharvest agriculture, we explore how synthetic
+                        biology might help reduce such losses. For us, culture is not only inherited from the past; it
+                        also shapes the questions we ask today. Traditional appreciation of flowers, respect for their
+                        seasonal life cycle, and the value placed on using resources carefully provide a cultural lens
+                        through which we rethink postharvest preservation with synthetic biology.</p>
+                </div><img src="images/BWYA.png" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. CAU-China 弹窗 -->
+    <div id="modal-cau" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Location</span>
+                    <h2>CAU-China</h2>
+                </div>
+                <img src="images/CAU-China 团队合照.jpg" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>We are Team CAU-China from China Agricultural University, composed of 20 members majoring in
+                        biology, mathematics, and veterinary medicine, united by the belief that synthetic biology can
+                        offer better solutions. This year, we are tackling the problem of food mold—combining rigorous
+                        experimental design with compassionate, people-centered human practices. We listen to
+                        scientists, farmers, and consumers to ensure our work addresses real-world needs while aligning
+                        with the Sustainable Development Goals. Our project, Fungal Sentinel, is a yeast GPCR-based
+                        early mold detection biosensor, and we hope it will inspire new ways to safeguard our food, our
+                        health, and our future.</p>
+                    <h3>Project Description</h3>
+                    <p>The global annual loss of food due to mold is approximately 3%, and China alone loses
+                        approximately 42 billion kilograms of grain annually due to mold growth during storage. Mold
+                        contamination causes postharvest losses and mycotoxin exposure, threatening food security.
+                        Because visual inspection and laboratory tests usually detect contamination only after fungal
+                        growth is established, CAU-China 2026 proposes Fungal Sentinel, a yeast-based early-warning
+                        platform for sensing fungal volatile organic compounds (VOCs) before visible mold appears. Using
+                        engineered <em>Saccharomyces cerevisiae</em> as a chassis, Fungal Sentinel reconstructs an
+                        olfactory sensing pathway by expressing mammalian olfactory receptors that detect
+                        mold-associated VOCs such as 1-octen-3-ol. A multi-receptor array improves specificity through
+                        VOC fingerprinting, while pathway rewiring with a GPA1/Gaolf chimera and RTP1S enhances signal
+                        transmission. VOC exposure triggers mStayGold fluorescence. For deployment, we will integrate
+                        stakeholder feedback and develop a low-cost portable fluorescence detector using LED excitation,
+                        smartphone imaging, and automated analysis. In the future, additional receptors and
+                        machine-learning-assisted pattern recognition could enable fungal species discrimination and
+                        broader food safety applications.</p>
+                    <h3>Cultural Connection</h3>
+                    <p>Grain, as the foundation for a prosperous and stable country, has always been important
+                        throughout history. Beijing has a history of over 800 years as the capital city. To ensure the
+                        huge food demand in the capital, emperors across dynasties built networks of granaries, laying
+                        the groundwork for food safety insurance and cultivating the grain storage culture. Ancient
+                        Chinese people used their wisdom and experiences to skillfully prevent food spoilage. For
+                        example, the Lumi granary opens windows on the top and air holes below, keeping the air flowing
+                        and the temperature steady, so stored grain can be preserved for a long time without becoming
+                        moldy. Although the technology of grain storage keeps advancing, molds are still considered a
+                        threat that cannot be ignored for food preservation. Globally, approximately 3% of grain lost is
+                        caused directly by mold annually, with China losing 42 billion kg in storage, posing threats to
+                        food security and storage monitoring. Molds can also produce poisonous mycotoxins like
+                        aflatoxins, ochratoxin, and fumonisin, which can cause vomiting, diarrhea, and fever. The danger
+                        of mold has never been far away from us, but luckily CAU-China 2026 came up with the idea of
+                        Fungal Sentinel, a yeast-based early-warning platform designed to sense fungal volatile organic
+                        compounds (VOCs) before visible mold appears. Our project targets the enclosed environment of
+                        household small granaries, ensuring the appearance of mold is predictable and lowering the risk
+                        of mycotoxins to a minimum. From grain storage culture in ancient times to high technology-based
+                        VOC biosensor, Fungal Sentinel carries forward the 800-year-old legacy of Beijing's grain
+                        culture into the era of synthetic biology.</p>
+                </div><img src="images/CAU-China 项目海报.jpg" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. CUHKSZ 弹窗 -->
+    <div id="modal-cuhksz" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Location</span>
+                    <h2>CUHKSZ</h2>
+                </div>
+                <img src="images/合照.jpg" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>We are Team plantSOS, representing The Chinese University of Hong Kong, Shenzhen in the 2026 iGEM
+                        Competition. Composed of 17 students spanning molecular biology, bioinformatics, engineering,
+                        and design, we are united by a shared goal: leveraging synthetic biology to solve plant growth
+                        problems that are difficult to detect in time. To combat this challenge, we are developing a
+                        real-time plant hormone early warning system—an engineered <em>E. coli</em> cell system designed
+                        to detect three plant hormones, including SA, JA, and ABA, with fluorescence. By combining
+                        rational protein design with rigorous mathematical modeling, our goal is to create a scalable
+                        biological solution that operates efficiently under real-world conditions.</p>
+                    <h3>Project Description</h3>
+                    <p>Current global climate strategies depend heavily on macro-weather reports and satellite imaging,
+                        but these frameworks remain blind to subterranean micro-climate crises in local environments.
+                        Climate change destabilizes plants by triggering fluctuations in essential stress hormones,
+                        including salicylic acid (SA), jasmonic acid (JA), and abscisic acid (ABA). Because regional
+                        weather alerts cover broad municipal areas rather than hyper-local realities, individual growers
+                        are left decoupled from molecular shifts inside their plants before visible symptoms like
+                        wilting appear. To bridge this data gap, we engineered a soil-extract and leaf-fluid biosensor
+                        powered by multiple <em>E. coli</em> molecular systems to act as a “ground-up” translator. By
+                        analyzing leaf fluid directly, the biosensor detects real-time hormone fluctuations to signal
+                        early plant stress. Consultations with home gardeners confirmed the need for hyper-local
+                        diagnostic tools, while plant physiology experts guided promoter sensitivity optimization.
+                        Feedback from biosecurity policymakers catalyzed a crucial design pivot from live bacterial
+                        deployment to a strictly contained, cell-free diagnostic kit. Economic and environmental audits
+                        ensured our business model remains affordable and our disposal protocols prevent synthetic DNA
+                        contamination in local watersheds. Beyond individual family gardens or small farms, this
+                        platform scales into a broader environmental monitoring framework. As non-expert plant lovers
+                        collect hyper-local measurements, these decentralized data points aggregate into a real-time,
+                        high-resolution network mapping underground conditions and plant health across entire regions.
+                        This crowdsourced network bridges the gap between macro-climate data and local realities,
+                        empowering everyday growers with actionable molecular insights to save their plants.</p>
+                    <h3>Cultural Connection</h3>
+                    <p>In the heart of Shenzhen, Team plantSOS bridges the hyper-speed pulse of technological innovation
+                        with the deep, silent rhythms of Lingnan ecology. Guangdong’s identity has long been rooted in a
+                        delicate dialogue with nature. For centuries, the rich soil of the Pearl River Delta nurtured an
+                        agricultural tradition defined by an acute sensitivity to seasonal shifts and the health of
+                        every leaf. Today, Shenzhen stands as an emblem of modern tech. Yet, beneath the city’s concrete
+                        canopy, plants battle subterranean micro-climate shifts in real time, suffering silently beneath
+                        macro-weather frameworks that miss the immediate reality of the soil. By engineering a
+                        biological biosensor to decode plant stress hormones, including salicylic acid, jasmonic acid,
+                        and abscisic acid, our project mirrors local cultural evolution. It harmonizes the ancient
+                        Lingnan reverence for the land with Shenzhen’s modern ethos of high-resolution connectivity.
+                        Just as traditional growers once listened to the subtle languages of the earth, our biosensor
+                        translates microscopic chemical cues into visible fluorescence, giving voice to the unspoken
+                        needs of plants before wilting begins. Furthermore, our project reflects the pioneer spirit of
+                        crowdsourced intelligence. As everyday gardeners collect hyper-local plant diagnostics,
+                        individual data points aggregate into a broader, living environmental network. In doing so, we
+                        weave synthetic biology into the cultural tapestry of modern Guangdong, transforming citizens
+                        into stewards of the land, uniting technology with ecology, and ensuring that as our city
+                        reaches toward the future, its roots remain deeply connected, protected, and heard.</p>
+                </div><img src="images/CUHKSZ.png" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. HKU-HongKong 弹窗 -->
+    <div id="modal-hku" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Hong Kong</span>
+                    <h2>HKU-HongKong</h2>
+                </div>
+                <img src="images/HKU-HongKong团队合照.jpg" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>The HKU iGEM team is an interdisciplinary student initiative proudly representing the University
+                        of Hong Kong's Faculty of Science, Faculty of Medicine, Faculty of Dentistry, and Faculty of
+                        Engineering. Over the past decade, our team has consistently demonstrated research excellence on
+                        the global stage, earning 4 gold, 7 silver, and 1 bronze medal at the annual iGEM Grand
+                        Jamboree. Beyond our competitive track record, we are deeply committed to fostering a
+                        collaborative synthetic biology ecosystem. HKU iGEM has played an active role in connecting
+                        universities across the Greater Bay Area (GBA) and the Asia-Pacific Region through annual
+                        regional iGEM symposiums, providing a premier platform for knowledge exchange,
+                        cross-institutional research sharing, and student mentorship. Driven by a vision to translate
+                        synthetic biology into real-world impact, our team combines wet-lab research, bio-hardware
+                        development, and local educational outreach—working closely with healthcare experts, secondary
+                        schools, and industry partners to address critical local and global challenges.</p>
+                    <h3>Project Description</h3>
+                    <p>Our iGEM project addresses the severe physical and psychological burden of chronic wounds, a
+                        prevalent issue profoundly diminishing the quality of life for Hong Kong's aging population.
+                        These non-healing wounds are characterized by a hostile microenvironment defined by persistent
+                        bacterial infection, tissue degradation, and, most critically, severe chronic inflammation. The
+                        primary driver of this localized chronic inflammation is the constant release of proinflammatory
+                        factors such as TNF-α, IL-6, and COX-2. To reduce the overproduction of these factors, we
+                        targeted Toll-like Receptor 4 (TLR4), which drives their release through the NF-κB signaling
+                        pathway. Our objective is to specifically interrupt this cascade—suppressing the overactive
+                        chronic response to alleviate suffering while preserving the baseline immune function necessary
+                        for natural healing. To achieve this, we are developing a smart hydrogel patch powered by
+                        cutting-edge de novo computational protein design. Utilizing deep learning frameworks, we employ
+                        RFdiffusion to generate entirely novel structural protein backbones tailored to block TLR4
+                        activation. We then apply ProteinMPNN to assign the precise amino acids for structural
+                        stability, followed by AlphaFold3 prediction and Molecular Dynamics (MD) simulations to validate
+                        our engineered inhibitors against the target pathway. Once validated, these custom de novo
+                        proteins will be integrated into a moisture-retaining hydrogel matrix equipped with a dynamic
+                        delivery system. To ensure precision therapy, our design incorporates Nitric Oxide (NO)
+                        detection—a key biomarker of the wound's hyperinflammatory gaseous environment. Because release
+                        is governed by an NO-responsive mechanism, the therapeutic proteins are deployed only when
+                        chronic inflammation is actively detected. By intelligently halting the TLR4-mediated cascade
+                        exactly when needed, our smart hydrogel breaks the chronic inflammatory cycle and actively
+                        promotes tissue repair.</p>
+                    <h3>Cultural Connection</h3>
+                    <p>Hong Kong has inherited a profound tradition of Traditional Chinese Medicine (TCM) and folk
+                        topical wound-care culture, rooted in its labour-intensive urban history. For centuries, dock
+                        workers and local labourers frequently sustained skin abrasions and chronic external injuries.
+                        Local grassroots communities widely adopted herbal plasters as gentle topical interventions.
+                        Rather than aggressively excising viable yet impaired tissue, classic TCM wound-healing
+                        philosophy emphasizes regulating local pathological disturbances, restraining excessive
+                        pathogenic responses, and preserving the body's intrinsic regenerative capacity to enable
+                        self-repair—a principle known as “supporting healthy Qi to expel pathogenic factors”.
+                        Traditional plasters shelter wounds and modulate the local microenvironment, rather than relying
+                        on forced debridement. This mild, regenerative philosophy has become a precious local medical
+                        heritage. However, conventional herbal plasters fail to treat modern intractable chronic wounds,
+                        including diabetic foot ulcers and pressure sores. These wounds are trapped in unremitting
+                        hyper-inflammation driven by various overactivated inflammatory signaling pathways, including
+                        TLR4/NF-κB signaling, which is the target pathway of our project, and excessive pro-inflammatory
+                        cytokines and enzymes, forming a hostile microenvironment that completely blocks endogenous
+                        tissue repair—a critical health challenge for Hong Kong's aging population. Inspired by this
+                        localized TCM wisdom, our HKU-Hong Kong team aims to modernize traditional wound-regulating
+                        philosophy via synthetic biology. Instead of herbal ingredients, we design de novo peptides to
+                        precisely block the TLR4 inflammatory cascade, suppress overwhelming immune responses, and
+                        preserve essential baseline immune function. Integrated within an NO-responsive smart hydrogel
+                        system, our design intelligently remodels disordered wound microenvironments exactly when
+                        chronic inflammation occurs. Our project inherits Hong Kong's traditional medicinal concept of
+                        “nurturing wound self-recovery rather than forced intervention”, while integrating it with
+                        cutting-edge computational protein design, providing a precise, mild, and effective chronic
+                        wound solution for local communities.</p>
+                </div><img src="images/HKU.png" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. HUBU-WUHAN 弹窗 -->
+    <div id="modal-hubu" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Wuhan</span>
+                    <h2>HUBU-WUHAN</h2>
+                </div>
+                <img src="images/团队合照.jpg" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>We are HUBU-WUHAN, a multidisciplinary team from Hubei University competing in iGEM 2026. Our
+                        members come from biology, chemistry, design, and communication backgrounds, united by a shared
+                        commitment to addressing environmental challenges through synthetic biology. Since Hubei
+                        University first joined iGEM in 2018, we have earned 5 gold and 7 silver medals. Building on
+                        this legacy, our 2026 project focuses on developing a whole-cell biosensor for the detection and
+                        degradation of naphthalene—a representative polycyclic aromatic hydrocarbon (PAH) that persists
+                        in the environment and poses risks to both ecosystems and human health. Our system integrates
+                        two functions into one platform: detection via fluorescent signaling, and degradation through
+                        engineered metabolic pathways. The result is a portable, low-cost tool that enables on-site
+                        screening of naphthalene contamination—transforming “invisible” pollutants into visible,
+                        actionable data. Beyond the lab, we engage with communities through science fairs, school
+                        workshops, and public events. Our mascot, Shanshan (Sparkle), brings synthetic biology closer to
+                        the public. To date, we have hosted multiple educational events reaching hundreds of
+                        participants, collaborated with local environmental organizations, and developed open-source
+                        educational materials. We believe science belongs not only in journals, but in the hands of
+                        those who need it most. Sense the problem. Solve with synbio.</p>
+                    <h3>Project Description</h3>
+                    <p>Our project develops a whole-cell biosensor for the detection and degradation of naphthalene, a
+                        persistent polycyclic aromatic hydrocarbon (PAH) that threatens ecosystems and human health. The
+                        system integrates two functions into a single platform: detection via fluorescent signaling and
+                        degradation through engineered metabolic pathways. This portable, low-cost tool enables on-site
+                        screening of naphthalene contamination, transforming “invisible” pollutants into visible,
+                        actionable data. By engineering bacteria that both sense and break down naphthalene, we aim to
+                        provide a practical solution for monitoring and remediating PAH pollution in water and soil. The
+                        project builds on Hubei University’s iGEM legacy and our team’s commitment to addressing
+                        environmental challenges through synthetic biology.</p>
+                    <h3>Cultural Connection</h3>
+                    <p>Our project is rooted in a deep cultural reverence for water—a value embedded in Chinese
+                        civilization for millennia. The Yangtze River, which flows through our campus city of Wuhan, is
+                        not merely a waterway; it is the lifeblood of communities, agriculture, and ecosystems across
+                        half of China. Yet the very waters that have nurtured generations now face threats from
+                        invisible pollutants like polycyclic aromatic hydrocarbons (PAHs). Our work draws from this
+                        cultural inheritance. The Chinese philosophy of <em>tian ren he yi</em> (unity of heaven and
+                        humanity) reminds us that human well-being is inseparable from environmental health. By
+                        developing a biosensor that detects and degrades naphthalene, we are not just engineering
+                        bacteria—we are restoring a relationship. Our whole-cell sensor acts as a modern-day guardian of
+                        the river, offering a low-cost, on-site tool that empowers local communities to monitor their
+                        own water quality. In this sense, synthetic biology becomes a bridge between ancient wisdom and
+                        contemporary action. We also draw cultural inspiration from the spirit of collective effort.
+                        Just as water connects villages, cities, and provinces along the Yangtze, our project connects
+                        scientists, educators, local environmental organizations, and community members. Through
+                        educational events, school workshops, and open-source materials, we are cultivating a shared
+                        responsibility for water protection—a practice as old as the rivers themselves. Ultimately, our
+                        project is more than a technical solution. It is a cultural statement: that science, when
+                        grounded in care for community and nature, becomes a force for healing. We stand at the
+                        confluence of tradition and innovation, using synthetic biology to honor the waters that have
+                        sustained life for centuries—and to ensure they continue to do so for generations to come.</p>
+                </div><img src="images/HUBU.png" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. HunanU 弹窗 -->
+    <div id="modal-hunanu" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Hunan</span>
+                    <h2>HunanU</h2>
+                </div>
+                <img src="images/HunanU 团队合照.jpeg" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>Team HunanU 2026 is the iGEM team from Hunan University. It consists of 22 undergraduate students
+                        from diverse schools including the College of Biology, the College of Chemistry and Chemical
+                        Engineering, and the College of Finance and Statistics, together with one high-school student
+                        from Yali High School, achieving interdisciplinary integration of knowledge. We are supported by
+                        a complete mentoring team. Our two primary Principal Investigators are Professor Haijun Tu and
+                        Associate Professor Ye Qiu. Our secondary principal investigators are Honghui Wang and Wei Li.
+                        Leveraging multidisciplinary backgrounds, team members collaborate across wet-lab experiments,
+                        mathematical modelling, human practices, science popularization, financial administration, and
+                        Wiki construction to jointly develop and implement our project NariViva.</p>
+                    <h3>Project Description</h3>
+                    <p>NariViva is a living biotherapeutic designed to address vaginal atrophy, dryness, and
+                        inflammation associated with genitourinary syndrome of menopause (GSM). By engineering
+                        beneficial probiotic bacteria to continuously produce and deliver naringenin locally, NariViva
+                        provides anti-inflammatory, mucosa-protective, and microbiome-restoring effects. This approach
+                        aims to improve vaginal tissue health, restore microbial balance, alleviate GSM symptoms, and
+                        offer a sustainable alternative to conventional hormonal or topical therapies.</p>
+                    <h3>Cultural Connection</h3>
+                    <p>In traditional Chinese culture, pomelos bear an inextricable connection with women. The pomelo,
+                        historically known as wendan, takes its ancient name from a woman from ancient Fujian who
+                        excelled at cultivating fine-quality pomelos with thin rinds and juicy flesh, and the fruit was
+                        thus named after her. Within ancient Chinese wedding customs, the pomelo carries the homophonic
+                        implication of “blessings for offspring” and symbolizes blessings for descendants and prosperity
+                        through many children, conveying well-wishes for the bride. In southern Chinese folk traditions,
+                        pomelo leaves serve as a purifying agent commonly used by women to dispel misfortune and pray
+                        for blessings. People would boil pomelo-leaf water for bathing during times of misfortune,
+                        house-moving, or postpartum recovery to wash away bad luck. Furthermore, during the Mid-Autumn
+                        moon-worshipping rituals of antiquity, pomelos stood as an essential altar offering in every
+                        household. Female household members presided over the ceremony, praying for auspicious marriage,
+                        personal safety, and familial harmony. In the 21st century, alongside rapid advances in
+                        life-science technologies, pomelos have acquired additional significance for women beyond
+                        culinary use and folk rituals. Naringenin, a bioactive natural dihydroflavone extracted from the
+                        white albedo of pomelo peels, exhibits anti-inflammatory, antioxidant, and weak estrogen-like
+                        properties. It modulates the female vaginal microenvironment at the molecular level and can be
+                        incorporated into topical therapeutic systems for genitourinary syndrome of menopause (GSM), a
+                        chronic condition afflicting numerous middle-aged women. Our project proposes a “microecological
+                        therapy” strategy based on engineered probiotics. Using lactic acid bacteria as the chassis, we
+                        construct metabolic pathways for flavonoid biosynthesis. The engineered strains sustainably
+                        synthesize naringenin within the vaginal niche to alleviate GSM-associated symptoms, delivering
+                        an innovative synthetic-biology solution for women’s health.</p>
+                </div><img src="images/Hunan.png" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. HUST-China 弹窗 -->
+    <div id="modal-hust" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Wuhan</span>
+                    <h2>HUST-China</h2>
+                </div>
+                <img src="images/HUST-China.jpg" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>HUST-China is a dedicated team for the International Genetically Engineered Machine (iGEM)
+                        Competition, relying on the College Student Innovation Base of Life Science and Technology of
+                        Huazhong University of Science and Technology (HUST), and jointly established by the School of
+                        Life Sciences and Qiming College of HUST. Since its formation in 2010, the team has been deeply
+                        engaged in the competition for over a decade. It has cumulatively won 1 TOP10 honor, 10
+                        individual best awards and nominations, 8 gold medals and 3 silver medals, and has also claimed
+                        the iGEMers' Prize for three consecutive years.</p>
+                    <h3>Project Description</h3>
+                    <p>Diancui (kingfisher feather-based structural color craft), a National Intangible Cultural
+                        Heritage of China, is a traditional gold and silver jewelry decorative craft that flourished in
+                        the Ming and Qing dynasties, using iridescent kingfisher feathers as the core raw material to
+                        present a unique permanent blue-green luster. However, this ancient craft now faces a fatal
+                        ecological and survival crisis: the core raw material, the kingfisher, has been listed as a
+                        protected wild animal in China, with a sharp decline in wild populations and a full ban on
+                        commercial trade. The traditional material collection method is not only illegal, but also
+                        causes irreversible damage to wild bird populations and the regional ecological chain,
+                        completely cutting off the source of natural materials. At the same time, the inheritance of
+                        intangible cultural heritage artisans is broken, making this classic craft gradually
+                        marginalized. This project does not use any animal-derived materials throughout the process,
+                        completely avoiding the ecological damage of traditional crafts. Relying on synthetic biology
+                        technology, we build a green sustainable closed loop of “waste – biomanufacturing –
+                        Diancui-mimetic materials.” Using waste cotton textiles as raw materials, the project realizes
+                        carbon source recovery from waste through enzymatic saccharification. Through the collaboration
+                        of four modules: bacterial cellulose synthesis, cellulose nanocrystal self-assembly, and
+                        structural protein design and expression, we accurately replicate the structural color
+                        characteristics and texture of kingfisher feathers, and create a sustainable Diancui-mimetic
+                        material with zero animal harm, mass-producibility, and degradability. We use green technology
+                        to solve the ecological dilemma of intangible cultural heritage inheritance, and revive the
+                        declining traditional craft.</p>
+                    <h3>Cultural Connection</h3>
+                    <p>This project is deeply rooted in the cultural connotation of Diancui (kingfisher feather-based
+                        structural color craft), a National Intangible Cultural Heritage of China, and realizes the
+                        inheritance, innovation, and contemporary interpretation of traditional Chinese regional culture
+                        through synthetic biology. First, it achieves the direct inheritance of cultural genes. Diancui,
+                        as a classic decorative craft of the Ming and Qing royal courts, carries the unique aesthetic
+                        system of traditional Chinese jewelry and the cultural memory of oriental iridescent aesthetics.
+                        The project does not simply replace raw materials, but accurately restores the core aesthetic
+                        characteristics and craft logic of Diancui, realizing the living inheritance of this endangered
+                        regional cultural symbol, and keeping the cultural context of this ancient craft alive in the
+                        contemporary era. Second, it draws methodological inspiration from traditional craft. The
+                        hierarchical structure, color rendering logic, and craft aesthetic of traditional Diancui art
+                        guide the modular design of our synthetic biology system. The traditional pursuit of “luster
+                        without fading” in ancient Chinese crafts also inspires our optimization of structural color
+                        stability, forming a two-way integration of traditional craft wisdom and modern biotechnology.
+                        Finally, it completes the metaphorical interpretation of traditional ecological philosophy. The
+                        project’s zero-animal-harm, green, and sustainable design aligns with the traditional Chinese
+                        ecological concept of “harmony between man and nature.” It solves the inheritance dilemma of
+                        local intangible cultural heritage with China’s independent synthetic biology technology, which
+                        is not only a practice of cultural confidence, but also provides a Chinese solution for the
+                        global inheritance of endangered traditional crafts.</p>
+                </div><img src="images/HUST.png" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. HZAU-China 弹窗 -->
+    <div id="modal-hzau" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Wuhan</span>
+                    <h2>HZAU-China</h2>
+                </div>
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>HZAU-China is an undergraduate synthetic biology team at Huazhong Agricultural University, with
+                        members from different majors. Since first participating in iGEM in 2013, the team has continued
+                        to address practical challenges in health, agriculture, and the environment, winning ten iGEM
+                        Gold Medals. In 2025, the team received another Gold Medal and two special award nominations:
+                        Best New Basic Part and Best Therapeutics Project. In 2026, the team is developing PurrFit, a
+                        project focused on feline obesity. It uses engineered gut bacteria and long-acting FGF21 to
+                        regulate fat metabolism, supported by a biosafety module and a digital assistant for daily
+                        weight management. Through this project, the team aims to explore the application of synthetic
+                        biology in companion animal health.</p>
+                    <h3>Project Description</h3>
+                    <p>PurrFit is HZAU-China's synthetic biology project for feline obesity. Indoor living, excessive
+                        feeding, low activity, and reduced basal metabolism have made obesity common among domestic
+                        cats, leading to metabolic dysfunction, limited mobility, and greater cardiopulmonary burden.
+                        Existing weight-loss plans often require strict, long-term owner participation, while medication
+                        may involve adverse effects or repeated administration. PurrFit combines metabolic regulation,
+                        microbial engineering, computational analysis, and daily health management to support controlled
+                        and sustained weight management. The treatment module promotes browning of white adipose tissue
+                        through endogenous and exogenous FGF21 signaling. Engineered <em>Bacteroides
+                            thetaiotaomicron</em> produces bile salt hydrolase (BSH), which converts conjugated bile
+                        acids into free bile acids, regulating the bile acid–FXR pathway and increasing endogenous FGF21
+                        production. FGF21 activates the FGFR/β-Klotho receptor complex and increases UCP1 expression in
+                        beige adipocytes, allowing more energy to be released as heat. A feline FGF21-ABD fusion protein
+                        binds serum albumin, increasing effective molecular size, reducing renal clearance, and
+                        prolonging systemic exposure. Molecular docking, conformational sampling, and molecular dynamics
+                        simulations evaluate protein stability and receptor accessibility. Targeted delivery uses donor
+                        <em>E. coli</em> S17-1λpir to transfer the pME plasmid to <em>B. thetaiotaomicron</em> via the
+                        RP4 conjugation system; a megRNA-guided CAST system then integrates the therapeutic payload into
+                        a genomic safe-harbor site. Biosafety is ensured by a DCA-responsive BreR–TetR negative-feedback
+                        circuit controlling BSH expression, and a nitrogen-dependent GlnA/GlnR–MazE/MazF kill switch for
+                        environmental containment. Spatial models and ordinary differential equations estimate donor
+                        survival, bacterial distribution, conjugation efficiency, establishment, and final BSH
+                        production. A digital assistant records body weight, food intake, and activity, providing
+                        personalized diet and exercise plans with scheduled reminders. Through these coordinated
+                        modules, PurrFit addresses therapeutic activity, precise delivery, biosafety, quantitative
+                        evaluation, and long-term owner participation.
+                    </p>
+                    <h3>Cultural Connection</h3>
+                    <p>[Not provided]</p>
+                </div><img src="images/HZAU-China 椤圭洰娴锋姤.PNG" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 9. NEFU-China 2026 弹窗 -->
+    <div id="modal-nefu" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Harbin</span>
+                    <h2>NEFU-China 2026</h2>
+                </div>
+                <img src="images/MEFU-China 2026团队合照.jpg" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>Our iGEM team is composed of undergraduates majoring in biotechnology and related life sciences
+                        at Northeast Forestry University. Through our AAAgri project, we aim to engineer <em>Yarrowia
+                            lipolytica</em> to convert waste oils into chrysanthemic acid, thereby developing an
+                        environmentally friendly approach to pest management. The team is organized into Wet Lab, Dry
+                        Lab, Human Practices and Science Communication, and Wiki and Design groups. The Wet Lab group
+                        translates societal needs into experimental work through metabolic engineering and directed
+                        evolution. The Dry Lab group conducts AI-assisted protein engineering, metabolic pathway
+                        modeling, and data analysis. The Human Practices and Science Communication group visits rural
+                        vegetable production bases, interviews experts, and runs outreach activities. The Wiki and
+                        Design group documents the project and creates materials for public engagement. With guidance
+                        from our PIs, faculty advisors, and external expert consultants, every team member contributes
+                        their strengths. Together, we hope to explore sustainable biomanufacturing solutions and advance
+                        green pest-management strategies for agriculture and public health.</p>
+                    <h3>Project Description</h3>
+                    <p>AAAgri develops an AAA-grade pest control strategy via sustainable biomanufacturing, producing
+                        chrysanthemic acid in engineered <em>Yarrowia lipolytica</em>. Our approach centers on three “A”
+                        pillars: Accurate—green, relatively specific pyrethrins from chrysanthemic acid enable
+                        ecofriendly pest management, block vector-borne disease transmission, and serve as high-demand
+                        precursors for public health drugs; Alternative—we upcycle low-value waste lipids as the sole
+                        carbon source, converting waste into high-value green pest control compounds;
+                        AI-assisted—AI-assisted protein engineering optimizes rate-limiting enzymes in the MVA pathway,
+                        boosting pathway efficiency and chrysanthemic acid titers. Long-term, we aim to establish a
+                        robust “waste-lipid-to-chrysanthemic-acid” platform for agriculture and public health, while
+                        developing a transferable high-DMAPP precursor module for universal isoprenoid biosynthesis.</p>
+                    <h3>Cultural Connection</h3>
+                    <p>Our project is deeply rooted in Chinese agricultural civilization and its millennia-long
+                        tradition of pest control. From the <em>Book of Songs</em> to Yao Chong’s rational locust
+                        campaign, and from the <em>Dao De Jing</em>’s principle of following nature to the ecological
+                        balance of traditional farming, Chinese culture has long sought harmony with the natural world.
+                        The journey of pyrethrum—from a foreign flower to a cultivated crop in Yunnan, and from flower
+                        to molecule—exemplifies this adaptive wisdom. Today, we renew this heritage through synthetic
+                        biology, cultivating chrysanthemic acid in <em>Yarrowia lipolytica</em> rather than harvesting
+                        flowers. By following the rules of nature and working with them, we transform ancient ecological
+                        philosophy into a modern, sustainable solution for pest management. This is not a rejection of
+                        tradition, but a continuation of it—using synthetic biology to achieve high efficacy, low
+                        toxicity, and biodegradability without disrupting ecosystems.</p>
+                </div><img src="images/NEFU.png" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 10. NNU-CHINA 弹窗 (Biosynthetic Indigo 项目) -->
+    <div id="modal-nnu" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Nanjing</span>
+                    <h2>NNU-CHINA</h2>
+                </div>
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>We are the NNU-CHINA team. Our project explores the sustainable production of indigo dye through
+                        synthetic biology, aiming to reduce the environmental footprint of the traditional textile
+                        industry.</p>
+                    <h3>Project Description</h3>
+                    <p>NNU-CHINA addresses the environmental and health threats of chemical indigo production, which
+                        relies on toxic reagents like aniline and hydrocyanic acid. The team engineers <em>E. coli</em>
+                        BL21(DE3) to construct a complete indigo biosynthesis pathway, enhancing efficiency and strain
+                        stability through CRISPR-associated transposase (CAST) and spatial compartmentalization. This
+                        clean route aims to reduce the textile industry's footprint and provide a universal framework
+                        for high-value compounds.</p>
+                    <h3>Cultural Connection</h3>
+                    <p>Indigo dyeing is a Chinese intangible cultural heritage, represented by Nantong blue calico and
+                        traditional tie-dye. Plant-derived indigo is limited by yield and season, while chemical
+                        synthesis requires harsh conditions. Biosynthetic indigo, molecularly identical, offers a
+                        sustainable raw material compatible with manual dyeing, supporting heritage crafts without
+                        farmland. The team integrates this heritage into science outreach, empowering tradition through
+                        biotechnology.</p>
+                </div><img src="images/NNU.png" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 11. NNU-Nanjing-China 弹窗 (ShellEvo 项目) -->
+    <div id="modal-nnu-nanjing" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Nanjing</span>
+                    <h2>NNU-Nanjing-China</h2>
+                </div>
+                <img src="images/NNU-Nanjing-China团队合照.jpg" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>Hello everyone! We are iGEMers from Nanjing Normal University. This year, our project focuses on
+                        the synthetic-biology-driven design and application of chitosanase. Using synthetic biology
+                        approaches, we aim to enhance the catalytic efficiency of chitosanase and optimize the
+                        degree-of-polymerization distribution of chitosan oligosaccharides. We are taking action to
+                        advance the development of green industry and public health via synthetic biology! Welcome to
+                        learn about and follow our project!</p>
+                    <h3>Project Description</h3>
+                    <p>Abundant crustacean shell waste poses a significant environmental burden, while efficient
+                        biocatalysts for high-value chitooligosaccharide (COS) production remain limited. To address
+                        this challenge, we developed ShellEvo, an engineered enzyme system combining chitosanase mining
+                        from extreme environments with rational protein engineering to improve catalytic activity and
+                        product selectivity. ShellEvo enables efficient enzymatic conversion of shell-derived chitosan
+                        into bioactive COS under mild conditions. By reducing chemical reagent consumption and improving
+                        product quality, our system provides a sustainable and feasible route for the green valorization
+                        of crustacean shell waste and the production of functional oligosaccharides.</p>
+                    <h3>Cultural Connection</h3>
+                    <p>Medicinal-edible homology underpins China's great health culture. Chitosan oligosaccharide
+                        possesses multiple bioactivities including antioxidant capacity and immunomodulation, and is
+                        widely applied in health-food products and agricultural biological agents. Traditional Chinese
+                        culture advocates the concepts of medicinal-edible homology and preventive treatment of
+                        diseases. Instead of aggressive therapies, it prioritizes daily health maintenance and physical
+                        conditioning. Our chitosan oligosaccharide products are developed for health preservation, which
+                        aligns with the traditional health philosophy of "preventive treatment of diseases." Ancient
+                        Chinese materia-medica classics document the medicinal use of crustaceans such as crabs and
+                        shrimps. We adopt biotechnologies to further explore the modern-day value of these traditional
+                        resources.</p>
+                </div><img src="images/NNUnanjing.png" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 12. SHSBNU-CHINA 弹窗 -->
+    <div id="modal-shsbnu" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Beijing</span>
+                    <h2>SHSBNU-CHINA</h2>
+                </div>
+                <img src="images/SHSBNU-CHINA鍥㈤槦鍚堢収.jpg" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>SHSBNU-China is a high school iGEM team from the International Division of the Second High School
+                        Attached to Beijing Normal University. Since first participating in iGEM in 2017, we have
+                        explored diverse challenges through synthetic biology, from environmental protection and
+                        healthcare to biomaterials and space exploration. Over the years, our team has consistently
+                        received Gold Medals, while continuously building upon the experience and ideas of previous
+                        generations. In 2021, SHSBNU-China achieved a Top 5 ranking among high school teams worldwide
+                        and received six Special Award nominations, marking one of the milestones in our iGEM journey.
+                        In 2022–2025, our projects continued to explore new frontiers, including anthocyanin production,
+                        titin-inspired biomaterials, microbial synthesis of L-theanine, and protein-based materials for
+                        space exploration. In 2026, we turn our attention to a challenge close to everyday life: how can
+                        we enjoy sweetness without relying on excessive sugar? With BLISS, we explore brazzein as a
+                        natural sweet protein and use synthetic biology to develop a more accessible, sustainable, and
+                        health-conscious alternative to conventional sweeteners. From one generation to the next, we
+                        keep asking new questions, building on what came before, and exploring how synthetic biology can
+                        create a better future.</p>
+                    <h3>Project Description</h3>
+                    <p>BLISS: Bioengineered Low-calorie Innovative Sweetener Synthesis addresses excessive sugar
+                        consumption, a major challenge for modern diets that increases demand for sweeteners providing
+                        satisfying sweetness with reduced sugar intake. Developing alternatives that combine high
+                        sweetness, pleasant taste, stability, affordability, and sustainable production remains
+                        difficult. Our project explores brazzein, a naturally occurring sweet protein derived from
+                        <em>Pentadiplandra brazzeana</em>, as a promising alternative to conventional sugar-based
+                        sweeteners. We focus on developing an efficient microbial production system for brazzein while
+                        exploring strategies to improve its performance. We designed brazzein expression constructs
+                        using synthetic biology and investigated recombinant production in <em>Escherichia coli</em>.
+                        Different fusion strategies were compared to improve protein expression and purification.
+                        Through experimental characterization, including protein concentration analysis and SDS-PAGE, we
+                        evaluated the performance of our constructs and identified differences between expression
+                        strategies, providing a foundation for further optimization. Beyond production, we investigate
+                        how protein engineering and computational analysis can contribute to improving brazzein. By
+                        examining structural features associated with protein stability and sweetness, we explore
+                        potential mutation sites and design strategies for future variants. Our modeling work connects
+                        molecular-level structural information with experimental engineering, creating an iterative
+                        process in which computational predictions guide experimental design and experimental results
+                        inform subsequent optimization. BLISS also extends beyond the laboratory. Through Human
+                        Practices, we engage with consumers, scientists, food-related professionals, and regulatory
+                        stakeholders to understand expectations surrounding sweeteners, including safety, functionality,
+                        sustainability, industrial feasibility, and the meaning of “natural” in biotechnology-produced
+                        foods. These perspectives help us evaluate whether our scientific solution can address
+                        real-world needs rather than remaining only a laboratory concept. Education is another central
+                        part of our project. Through PrintScope, our portable educational microscope, we aim to lower
+                        the barrier to observing the microscopic world and connect hands-on observation with synthetic
+                        biology. We developed an inquiry-based learning pathway that encourages students to Search,
+                        Capture, Observe, Predict, and Explore, transforming microscopy from simple observation into a
+                        process of scientific inquiry. Ultimately, BLISS is not only an attempt to produce a sweet
+                        protein. It is an exploration of how synthetic biology, protein engineering, computational
+                        design, Human Practices, and education can work together to rethink sweetness. By developing a
+                        potentially more accessible and sustainable route to brazzein, we hope to contribute to a future
+                        in which reducing sugar does not mean giving up the experience of sweetness.
+                    </p>
+                    <h3>Cultural Connection</h3>
+                    <p>[Not provided]</p>
+                </div><img src="images/SHSBNU-CHINA椤圭洰娴锋姤.jpg" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 13. SUSTech-BIO 弹窗 -->
+    <div id="modal-sustech-bio" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Shenzhen</span>
+                    <h2>SUSTech-BIO</h2>
+                </div>
+                <img src="images/SUSTech-BIO团队合照.jpg" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>SUSTech-BIO 2026 is the undergraduate iGEM team of the School of Life Sciences at the Southern
+                        University of Science and Technology (SUSTech). The team brings together students from diverse
+                        disciplines—Biological Sciences, Biomedical Sciences, Biomedical Engineering, Bioinformatics,
+                        Statistics, Computer Science, Clinical Medicine, and Media—working at the intersection of
+                        multiple fields. Under the guidance of four PIs, Zefeng Wang, Fuxing Zeng, Min Zhang, and Jacky
+                        Yuen, the team focuses its research on RNA editing for Alzheimer's disease. From target
+                        screening and editor design to in vitro validation, the entire workflow is driven independently
+                        by undergraduate team members. The group collaborates closely across wet lab, dry lab, human
+                        practices, and visual design, with each member contributing their unique strengths. Notably,
+                        SUSTech-BIO achieved remarkable success at last year's iGEM Grand Jamboree, winning a Gold Medal
+                        and ranking among the Top 10 Undergraduate teams worldwide for the first time. The team also
+                        claimed first place globally in Best Entrepreneurship and Inclusivity Award, along with
+                        nominations for Best Model, Best Wiki, and Best Presentation, laying a solid methodological
+                        foundation for this year's project. Departing from Shenzhen—China's "City of Innovation"—the
+                        team carries SUSTech's pioneering and cross-disciplinary spirit into the synthetic biology
+                        arena.</p>
+                    <h3>Project Description</h3>
+                    <p>Alzheimer's disease affects millions of families worldwide, but current treatments still cannot
+                        fully address its underlying causes. One major genetic risk factor is APOE4, a version of a gene
+                        that can greatly increase a person's chance of developing the disease. Our project, ORCA,
+                        explores a therapeutic RNA editing strategy to temporarily edit specific base(s) in APOE4 mRNA,
+                        aiming to shift the disease-associated APOE4 protein product toward a safer APOE3-like form,
+                        without permanently changing the patient's DNA. We will combine wet-lab experiments with
+                        computational modeling to optimize the editor's structure, predict possible off-target effects,
+                        and guide delivery design, while adding control modules so the system can work more efficiently
+                        and specifically in disease-relevant cells. While ORCA is designed with Alzheimer's therapy in
+                        mind, it may also provide a modular RNA editing framework for future biomedical research.</p>
+                    <h3>Cultural Connection</h3>
+                    <p>Suzhou classical gardens are more than carefully arranged landscapes; they are vessels of human
+                        memory. Through elements such as rocks, water, corridors, and framed views, garden designers
+                        transformed personal experiences, emotions, and philosophies into a physical space that could be
+                        preserved across generations. This idea resonates deeply with our project, ORCA, which aims to
+                        intervene in Alzheimer's disease through RNA editing. Alzheimer's disease is characterized by
+                        the progressive loss of memories and cognitive functions, gradually disrupting an individual's
+                        connection with their own experiences. By correcting disease-associated RNA messages before they
+                        become proteins, ORCA explores a new possibility: preserving biological information at an
+                        earlier stage. Our project name, ORCA, is inspired by the orca whale. In nature, orcas are known
+                        for their complex social structures and intergenerational knowledge transmission. Older
+                        individuals, especially matriarchs, play an important role in guiding their groups by passing
+                        down information about migration routes and survival strategies. This creates a meaningful
+                        connection among three forms of memory: gardens preserve cultural memory, orcas preserve
+                        ecological memory, and the human brain preserves personal memory. RNA editing reflects a similar
+                        philosophy of reinterpretation. Instead of changing the original DNA blueprint, RNA editing
+                        modifies temporary molecular messages, allowing the same genetic information to produce
+                        different outcomes. Much like the concept of "changing scenery with every step" (<em>yibu
+                            huanjing</em>) in Suzhou gardens, where the same landscape reveals different perspectives
+                        from different positions, RNA editing allows a biological message to be refined and redirected
+                        without altering the underlying genetic identity. Through ORCA, we hope to connect traditional
+                        wisdom with emerging biotechnology: using modern molecular tools to protect one of humanity's
+                        most precious forms of memory.</p>
+                </div><img src="images/SUSTech-BIO 项目海报.png" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 14. SUSTech-MED 弹窗 -->
+    <div id="modal-sustech-med" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Shenzhen</span>
+                    <h2>SUSTech-MED</h2>
+                </div>
+                <img src="images/SUSTECH-MED团队合照.jpg" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>SUSTech-MED is an interdisciplinary iGEM team supported by the School of Medicine at SUSTech,
+                        competing since 2016 and independently established in 2023. Uniting students across clinical
+                        medicine, biomedical science, biomedical engineering, computer science, and statistics, the team
+                        integrates clinical needs with dry/wet lab research, data modeling, and Human Practices, earning
+                        multiple iGEM Gold Medals. Moving forward, SUSTech-MED continues to leverage its
+                        medicine-engineering-science synergy to address global health challenges through synthetic
+                        biology.</p>
+                    <h3>Project Description</h3>
+                    <p>SUSTech-MED focuses on the frontier of Autism Spectrum Disorder (ASD) intervention. Our team
+                        innovatively utilizes <em>Lactobacillus plantarum</em> L168 as a synthetic biology chassis,
+                        engineered to biosynthesize functional molecules—Sulforaphane (SFN) and N-Acetylcysteine
+                        (NAC)—while incorporating metabolic pathways to efficiently degrade glutamine and convert
+                        neurotoxic brain ammonia into branched-chain amino acids (BCAAs). Delivered via a non-invasive
+                        intranasal route to bypass the blood-brain barrier, our system precisely targets the neural
+                        microenvironment. By synergistically mitigating ammonia toxicity, modulating neuroinflammation,
+                        and alleviating oxidative stress, this platform reshapes the neural microenvironment to relieve
+                        core ASD symptoms, pioneering a novel, non-invasive, and promising synthetic biology paradigm
+                        for autism care.</p>
+                    <h3>Cultural Connection</h3>
+                    <p>Our project takes the Chinese white dolphin—an iconic ecological symbol of the Guangdong-Hong
+                        Kong-Macao Greater Bay Area—as its visual emblem and spiritual anchor. Often described as the
+                        “giant panda of the sea,” this rare species is known for its remarkable sensitivity, distinctive
+                        patterns of social communication, and strong dependence on a clean and stable environment. These
+                        characteristics resonate with the inner world of individuals with autism: pure and sensitive,
+                        yet sometimes challenged by difficulties in communication and social integration associated with
+                        imbalances in the neural microenvironment. Our project introduces an innovative, non-invasive
+                        intranasal delivery strategy. The dolphin's graceful ability to move freely through the water
+                        and overcome barriers symbolizes our approach of delivering therapeutic molecules directly to
+                        the brain through the nose-to-brain pathway, thereby bypassing the blood-brain barrier. Through
+                        the coordinated regulation of multiple biological pathways, we aim to restore balance within the
+                        brain microenvironment and gently support individuals seeking to overcome barriers and rebuild
+                        social connections. In this way, our project integrates cutting-edge synthetic biology with a
+                        deep commitment to humanistic care and respect for the dignity of individuals with autism.</p>
+                </div><img src="images/MED.png" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 15. TJUSLS_China 弹窗 -->
+    <div id="modal-tjusls" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Tianjin</span>
+                    <h2>TJUSLS_China</h2>
+                </div>
+                <img src="images/TJUSLS_China 团队合照.png" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>TJUSLS-China is the iGEM team from the School of Life Sciences, Tianjin University. Its
+                        undergraduate members come from multiple disciplines, including the School of Life Sciences,
+                        School of Medicine, School of Pharmaceutical Science, and School of Precision Instruments and
+                        Opto-electronics Engineering. Team roles are divided into five working groups: Experimental
+                        Group, Modelling Group, HP Group, Art Group, and Wiki Group. Supported by the on-campus
+                        laboratory platform of Professor Wang Zefang's research group, the team has long focused on the
+                        mining and engineering of plastic-degrading enzymes. Under the technical supervision of
+                        principal investigators Wang Zefang and Xiao Yunjie, we have accomplished metagenomic enzyme
+                        mining, rational protein engineering, and enzyme-activity validation. Attaching great importance
+                        to industry-academia-research collaboration and public science outreach, we iterate project
+                        designs through expert and enterprise surveys. We independently develop IP characters, board
+                        games, science courses, and short-video series, extending laboratory-based research into social
+                        science-popularization practice, and commit to solving real-world solid-waste environmental
+                        problems with synthetic biology.</p>
+                    <h3>Project Description</h3>
+                    <p>TJUSLS-China 2026 iGEM project PUReCycle focuses on the biodegradation and resource-oriented
+                        recycling of MDI-based polyether polyurethane solid waste. This cross-linked polymer is
+                        recalcitrant under natural conditions, while landfilling and incineration bring severe
+                        pollution, and available biodegrading enzyme resources remain extremely scarce. Relying on
+                        metagenomic databases, our project conducts computational enzyme mining via sequence screening,
+                        structure prediction, and molecular docking. We perform heterologous expression, protein
+                        purification, and enzyme-activity assays in <em>E. coli</em>, carry out rational engineering of
+                        AbPURase, and discover brand-new PUC-series degrading enzymes. Mutants with enhanced activity
+                        have been screened out, providing a biological solution for polyurethane solid-waste treatment.
+                    </p>
+                    <h3>Cultural Connection</h3>
+                    <p>The TJUSLS-China 2026 iGEM PUReCycle project establishes multidimensional connections between
+                        polyurethane biodegradation research and traditional Chinese ecological philosophy. In terms of
+                        direct inheritance, our project draws inspiration from age-old Chinese ecological wisdom
+                        spanning Taoist philosophy and ancient agronomic practices. The Taoist classic <em>Tao Te
+                            Ching</em> records the idea “constantly good at rescuing things, leaving no discarded
+                        objects,” which advocates making full use of materials instead of reckless disposal. Ancient
+                        agricultural text <em>Qi Min Yao Shu</em> also describes circular-resource practices that turned
+                        crop residues and organic waste into fertilizer, realizing the concept of “turning waste into
+                        treasure” in real-world production. Rooted in such heritage, the ancient Chinese idea of
+                        utilizing waste to create new value guides our experimental objectives. Rather than adopting
+                        polluting incineration or landfilling for MDI-based polyether polyurethane waste—approaches
+                        generating toxic by-products and accumulating recalcitrant microplastics in soil and
+                        groundwater—our project puts circular-economy thinking into molecular-level lab practice.
+                        Inspired by traditional circular logic, we explore biological routes to rebuild material cycles
+                        for non-degradable polymer waste. We conduct genome-scale computational mining of metagenomic
+                        data, construct recombinant plasmids, achieve heterologous expression in <em>E. coli</em>
+                        BL21(DE3), and purify candidate PURase enzymes including AbPURase and PUC-series variants via
+                        Ni-affinity chromatography. These efforts enable biological depolymerization of tough
+                        polyurethane polymers into degradable small fragments. Our wet-lab work translates the ancient
+                        “turning waste into treasure” philosophy into practical synthetic-biology workflows for plastic
+                        waste treatment, delivering a biological alternative for persistent polyurethane waste disposal.
+                    </p>
+                </div><img src="images/TJUSLS_China 项目海报.png" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 16. USTC-iGEM 弹窗 -->
+    <div id="modal-ustc" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Hefei</span>
+                    <h2>USTC-iGEM</h2>
+                </div>
+                <img src="images/USTC-iGEM团队合照.jpg" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>TEMPO is the iGEM 2026 team from the University of Science and Technology of China. We are a
+                        group of students with diverse academic backgrounds and complementary skills, united by a shared
+                        curiosity about how biological systems can be designed to keep time. Many of us joined iGEM as
+                        first-year students, while others came aboard as second-year students already carrying prior
+                        experience. As the project progressed, the first-years stepped into their second year, and the
+                        second-years moved into their third—not only advancing in academic standing, but also growing in
+                        skills, responsibilities, and our collective understanding of synthetic biology. Time changed
+                        our grades. More importantly, it changed what we were capable of doing. Our team is built
+                        primarily around biology, with members bringing biological knowledge, experimental design
+                        expertise, and molecular biology skills to the bench. Alongside them, students from chemistry
+                        contribute a molecular perspective and chemical understanding that enriches how we approach our
+                        system. Students from automation bring an engineering mindset to the team. They help us think
+                        about biological networks not only as biochemical pathways, but as systems that can be designed,
+                        controlled, and programmed—a perspective that connects naturally to TEMPO’s programmable
+                        oscillator and binary counter. Within TEMPO, we organize our work across five groups:
+                        Experimental Team, Modeling Team, Human Practices Team, Visual Design Team, and Website Team.
+                        Although we work in different groups, our work is never isolated. We are not five separate
+                        groups working under one name. We are one team, speaking the languages of biology, chemistry,
+                        engineering, modeling, design, and society, working together to build something none of us could
+                        build alone.</p>
+                    <h3>Project Description</h3>
+                    <p>TEMPO is a modular synthetic timing system composed of three functional layers: an oscillator, a
+                        binary counter, and an effector, corresponding to a biological clock, memory, and actuator. The
+                        oscillator generates periodic molecular pulses that define discrete units of biological time.
+                        These pulses are converted into integrate expression signals and transmitted to the downstream
+                        counter. Instead of measuring absolute hours directly, TEMPO counts repeated oscillator cycles,
+                        allowing elapsed time to be encoded into stable DNA states. At the core of the system is an
+                        expandable integrate-RDF-based binary counter. Each input pulse triggers reversible
+                        site-specific DNA recombination, switching an individual bit between two genetic states. By
+                        cascading multiple switches, the system can progress through binary states such as 000, 001,
+                        010, 011, and 100, enabling scalable pulse counting and long-term genetic memory. Once a
+                        predefined state is reached, a state-specific promoter activates an effector module, enabling
+                        functions such as timed protein expression or programmed cell elimination. Mathematical modeling
+                        serves as a central bridge between these modules. We characterized oscillator period, amplitude,
+                        and recombine output, and directly coupled the simulated oscillator waveform to the binary
+                        counter to test whether realistic pulses could reliably drive DNA-state transitions. For the
+                        single-bit counter, parameter screening was used to optimize repressor-promoter strength, assess
+                        the need for degradation tags, and guide experimental construction. We further compared two
+                        multi-bit carry strategies—a feed-forward pulse-based cascade and a free-recombine-mediated
+                        cascade—to evaluate scalability. Finally, global sensitivity analysis identified the parameters
+                        that most strongly influence oscillation period, switching efficiency, and overall robustness.
+                        Modeling also revealed a potential limitation in expression termination, motivating an
+                        additional control module for more precise timing. Together, TEMPO transforms time from a
+                        passive biological variable into an engineeringable input, providing a quantitative and modular
+                        framework for autonomous gene expression, biocontainment, biosensing, and programmable
+                        therapeutic systems.</p>
+                    <h3>Cultural Connection</h3>
+                    <p>TEMPO’s design also echoes a long tradition of understanding time through cycles rather than
+                        absolute numerical measurements. In traditional Chinese culture, time was historically organized
+                        through recurring natural rhythms. The twelve Shichen divided a day according to the periodic
+                        movement of the Sun, while traditional calendars combined lunar cycles, seasonal changes, and
+                        the Twenty-Four Solar Terms to coordinate agriculture and everyday life. Instead of treating
+                        time as an abstract number, these systems interpreted time through repeated observable events:
+                        sunrise and sunset, seasonal transitions, plant growth, temperature changes, and celestial
+                        motion. TEMPO follows a surprisingly similar logic at the cellular scale. Rather than giving a
+                        cell an external clock or asking it to directly measure “seven hours” or “twenty-four hours,”
+                        TEMPO creates an internal biological rhythm. Each oscillator cycle becomes a discrete unit of
+                        time, analogous to the repeated natural phenomena used in traditional timekeeping. The binary
+                        counter then records how many cycles have occurred, converting transient rhythms into persistent
+                        genetic memory. When a predefined number of cycles has passed, the cell performs a programmed
+                        action. This creates a conceptual correspondence: natural cycle → time unit → accumulated record
+                        → scheduled activity becomes oscillation → molecular pulse → genetic count → biological action.
+                        This cultural connection is therefore not a direct reproduction of an ancient technology, but a
+                        methodological inspiration. Both traditional Chinese timekeeping and TEMPO understand time
+                        through periodic processes and use accumulated cycles to determine when an event should occur.
+                        From agricultural calendars that guided sowing and harvesting to synthetic circuits that
+                        determine when a cell expresses a protein or terminates itself, the underlying idea remains
+                        similar: time becomes meaningful when rhythm can be observed, remembered, and translated into
+                        action. TEMPO therefore offers a modern synthetic-biology interpretation of an ancient human
+                        idea—using cycles to give structure to time.</p>
+                </div><img src="images/USTC-iGEM_海报.png" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <!-- 17. ZJUT-China 弹窗 -->
+    <div id="modal-zjut" class="modal-overlay">
+        <div class="modal-content"><button class="modal-close-btn">&times;</button>
+            <div class="modal-scroll-area">
+                <div class="modal-header"><span class="location-tag">Hangzhou</span>
+                    <h2>ZJUT-China</h2>
+                </div>
+                <img src="images/ZJUT-China 团队合照.png" alt="Team" class="modal-hero-img">
+                <div class="modal-text-section">
+                    <h3>About the Team</h3>
+                    <p>[Not provided]</p>
+                    <h3>Project Description</h3>
+                    <p>Addressing the critical clinical need for early diagnosis of colorectal cancer (CRC), the
+                        ZJUT-China team has developed a novel non-invasive screening system based on synthetic biology.
+                        This project employs engineered probiotics that are genetically modified to integrate multiple
+                        functional modules, including gut colonization, signal sensing of disease biomarkers, and
+                        chromogenic reporting. Upon encountering specific CRC-associated molecular signals in the
+                        intestinal environment, these probiotics undergo a programmed response that produces a visible
+                        color change, enabling straightforward detection without the need for complex instrumentation or
+                        invasive procedures. Compared with conventional invasive screening methods such as colonoscopy,
+                        this system offers significant advantages: it is simple to operate, low in cost, and highly
+                        acceptable to the general population, thereby greatly improving patient compliance. The ultimate
+                        goal is to provide a convenient and economical alternative for early CRC detection, which can
+                        facilitate timely intervention and treatment. By making routine screening more accessible and
+                        less burdensome, this approach has the potential to substantially increase early diagnosis
+                        rates, improve patient survival outcomes, and reduce the overall socioeconomic burden of
+                        colorectal cancer on healthcare systems.</p>
+                    <h3>Cultural Connection</h3>
+                    <p>In Zhejiang, pickled vegetables, raw marinated seafood, and dried preserved mustard greens are
+                        everyday staples, cherished for their distinctive salty umami. Yet this deeply rooted culinary
+                        tradition, characterized by high salt, high fat, and very low dietary fiber, has silently
+                        contributed to one of China's highest colorectal cancer rates. According to local health data,
+                        the incidence is climbing by over 2% annually, with more than 23,000 new cases diagnosed each
+                        year—a stark reminder that even beloved customs can carry hidden health costs. The ancient
+                        Chinese philosophy of "preventing disease before it arises" (治未病), a cornerstone of traditional
+                        medicine, inspires our approach. Rather than waiting for symptoms to appear, G-SCOUT embodies
+                        this proactive wisdom by turning a harmless probiotic—<em>E. coli</em> Nissle 1917 (EcN)—into a
+                        living sentinel inside the human gut. Much like our ancestors used natural indicators to detect
+                        spoilage in food, our engineered bacteria are designed to sense two early danger signals tightly
+                        linked to colorectal cancer initiation: the co-aggregation of <em>Fusobacterium nucleatum</em>
+                        with other Gram-negative pathogens, and abnormally elevated ethanolamine levels. When either
+                        signal is detected, the EcN produces a visible, colored pigment that is excreted into the
+                        stool—enabling users to spot potential high-risk adenomas long before any discomfort arises,
+                        when the five-year survival rate exceeds 99%, compared to just 15% at late stage. Critically,
+                        G-SCOUT is not a rejection of regional food culture. Instead, it offers a scientific
+                        compromise—preserving culinary heritage while mitigating its health consequences. It directly
+                        addresses those who lack access to routine medical checkups: remote farmers in impoverished
+                        areas, migrant workers moving between cities, and busy white-collar employees without sufficient
+                        insurance or time. By transforming costly, invasive colonoscopy into an affordable,
+                        user-friendly home test, we democratize early screening and honour the traditional value of
+                        prevention. This is how we fuse ancient insight with modern biotechnology—not to erase culture,
+                        but to protect the lives that live within it.</p>
+                </div><img src="images/ZJUT-China团队海报.png" alt="Poster" class="modal-poster-img">
+            </div>
+        </div>
+    </div>
+
+    <script src="atlas-script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>聚景成园 | Condensation Workshop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root {
+            --color-bg: #1e2b2f;
+            --color-text: #1e2b2f;
+            --color-text-light: #4f5d58;
+            --color-text-muted: #5b6a63;
+            --color-accent: #b8a99a;
+            --color-accent-light: #d3c6b9;
+            --color-accent-bg: #e9dfd6;
+            --color-sidebar: #ba9b36;
+            --color-sidebar-text: #f7f5f4;
+            --color-sidebar-text-muted: #7d756b;
+            --color-card-bg: rgba(255, 255, 255, 0.85);
+            --color-glass: rgba(255, 255, 255, 0.3);
+            --color-glass-light: rgba(255, 255, 255, 0.5);
+            --color-shadow: rgba(0, 0, 0, 0.12);
+            --color-shadow-light: rgba(0, 0, 0, 0.06);
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            --radius-sm: 8px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --radius-xl: 40px;
+            --radius-full: 40px;
+            --font-family: "Noto Serif SC", STSong, serif;
+            --font-weight-light: 300;
+            --font-weight-regular: 450;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --transition-fast: 0.2s;
+            --transition-smooth: 0.25s;
+            --blur-sm: 4px;
+            --blur-md: 8px;
+            --blur-lg: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            background: url(images/bg3.png) no-repeat center center fixed;
+            background-size: cover;
+            font-family: var(--font-family);
+            padding: calc(80px + var(--spacing-xl)) var(--spacing-md) var(--spacing-xl);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-x: hidden;
+        }
+
+        .global-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 80px;
+            background: rgba(244, 236, 216, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #d4c4b7;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            box-sizing: border-box;
+            z-index: 9999;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            font-family: "Noto Serif SC", STSong, serif;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-link:hover {
+            transform: scale(1.02);
+        }
+
+        .nav-logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            border-radius: 4px;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.15));
+        }
+
+        .nav-brand {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #8b2b2b;
+            letter-spacing: 3px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            color: #4a3b32;
+            font-size: 1.05rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            padding: 8px 18px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .nav-item:hover {
+            color: #f9f6ef;
+            background-color: #a84b4b;
+            transform: scale(1.05);
+        }
+
+        .nav-petal {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #ffcce5;
+            border-radius: 10px 0 10px 0;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .app-wrapper {
+            display: flex;
+            gap: var(--spacing-xl);
+            max-width: 1280px;
+            width: 100%;
+            backdrop-filter: blur(var(--blur-lg));
+            -webkit-backdrop-filter: blur(var(--blur-lg));
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-lg);
+            box-shadow: 0 20px 60px var(--color-shadow);
+            border: 1px solid var(--color-glass);
+        }
+
+        .sidebar {
+            width: 250px;
+            background: var(--color-sidebar);
+            color: var(--color-sidebar-text);
+            padding: var(--spacing-xl) var(--spacing-lg);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            height: fit-content;
+            position: sticky;
+            top: calc(80px + var(--spacing-lg));
+            box-shadow: 0 8px 24px var(--color-shadow-light);
+            border-radius: var(--radius-md);
+        }
+
+        .sidebar-brand {
+            font-size: 1.6rem;
+            font-weight: var(--font-weight-light);
+            letter-spacing: 2px;
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid rgba(236, 231, 225, 0.15);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .sidebar-brand span {
+            font-weight: var(--font-weight-semibold);
+            color: #f9f8f7;
+        }
+
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            flex: 1;
+        }
+
+        .sidebar-nav .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.65rem 1rem;
+            border-radius: var(--radius-full);
+            color: #fbfbfa;
+            text-decoration: none;
+            font-weight: var(--font-weight-regular);
+            transition: all var(--transition-fast);
+            border: 1px solid transparent;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .sidebar-nav .menu-item i {
+            width: 22px;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .sidebar-nav .menu-item.active {
+            background: rgba(217, 200, 178, 0.18);
+            color: #f0ebe4;
+            border-color: rgba(217, 200, 178, 0.25);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .sidebar-nav .menu-item:not(.active):hover {
+            background: rgba(255, 255, 255, 0.04);
+            color: #e6ddd4;
+        }
+
+        .nav-divider {
+            margin: 0.8rem 0 0.4rem 0;
+            border-top: 1px solid rgba(236, 231, 225, 0.08);
+        }
+
+        .nav-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #f8f7f7;
+            padding: 4rem 1rem 0.1rem 1rem;
+        }
+
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 1.2rem;
+            font-size: 0.75rem;
+            color: var(--color-sidebar-text-muted);
+            border-top: 1px solid rgba(236, 231, 225, 0.08);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .main-content {
+            flex: 1;
+            min-width: 0;
+            background: var(--color-card-bg);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-md);
+        }
+
+        .section {
+            scroll-margin-top: calc(80px + var(--spacing-md));
+        }
+
+        .page-header {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .page-header h1 {
+            font-size: 2.6rem;
+            font-weight: var(--font-weight-light);
+            letter-spacing: 1px;
+            color: var(--color-text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .title-bg {
+            display: inline-block;
+            background: url(images/边框.png) no-repeat center center;
+            background-size: cover;
+            padding: 1.2rem 3rem;
+            border-radius: var(--radius-sm);
+            line-height: 1.4;
+            font-size: inherit;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .task-stack {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+            margin-top: 1.2rem;
+        }
+
+        .task-card {
+            backdrop-filter: blur(var(--blur-md));
+            -webkit-backdrop-filter: blur(var(--blur-md));
+            border-radius: var(--radius-lg);
+            padding: 1.8rem var(--spacing-xl);
+            transition: all var(--transition-smooth);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 1.2rem 1.8rem;
+            scroll-margin-top: calc(80px + var(--spacing-md));
+        }
+
+        .task-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            min-width: 170px;
+            flex: 0 0 auto;
+        }
+
+        .task-icon {
+            font-size: 2.2rem;
+            color: #8e7b6b;
+            width: 3rem;
+            text-align: center;
+        }
+
+        .task-title-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .task-title-group h2 {
+            font-size: 1.4rem;
+            font-weight: var(--font-weight-medium);
+            letter-spacing: -0.3px;
+            color: var(--color-text);
+            line-height: 1.2;
+        }
+
+        .task-badge {
+            font-size: 0.7rem;
+            background: var(--color-accent-bg);
+            padding: 0.05rem 0.8rem;
+            border-radius: var(--radius-full);
+            color: #3c4a45;
+            display: inline-block;
+            margin-top: 0.1rem;
+            align-self: flex-start;
+        }
+
+        .task-details {
+            flex: 1;
+            min-width: 230px;
+        }
+
+        .task-details p {
+            color: #2c3a36;
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .highlight-box {
+            backdrop-filter: blur(var(--blur-sm));
+            border-radius: 18px;
+            padding: 0.8rem 1.2rem;
+            margin: var(--spacing-sm) 0 0.3rem;
+            font-size: 0.9rem;
+            border-left: 5px solid var(--color-accent);
+        }
+
+        .highlight-box strong {
+            color: var(--color-text);
+        }
+
+        .highlight-box ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0.3rem 0 0 0;
+        }
+
+        .highlight-box ul li {
+            padding: 0.2rem 0 0.2rem 1.6rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .highlight-box ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #9a8878;
+        }
+
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin: 0.4rem 0 0.2rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(225, 213, 202, 0.7);
+            color: var(--color-text);
+            font-size: 0.65rem;
+            padding: 0.15rem 0.8rem;
+            border-radius: 30px;
+            font-weight: var(--font-weight-medium);
+            letter-spacing: 0.3px;
+        }
+
+        .btn-ghost {
+            margin-top: 0.6rem;
+            border: 1px solid var(--color-accent-light);
+            background: var(--color-glass-light);
+            padding: 0.35rem 1.2rem;
+            border-radius: var(--radius-full);
+            color: #3f4d47;
+            font-weight: var(--font-weight-regular);
+            display: inline-block;
+            transition: var(--transition-fast);
+            cursor: default;
+            font-size: 0.85rem;
+            backdrop-filter: blur(var(--blur-sm));
+        }
+
+        .btn-ghost i {
+            margin-right: 0.4rem;
+        }
+
+        .btn-ghost:hover {
+            background: #ede7e0;
+            border-color: #b6a494;
+        }
+
+        .flow-row {
+            margin-top: var(--spacing-lg);
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        .flow-row span i {
+            color: #8e7b6b;
+            margin-right: 0.3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="global-nav">
+        <div class="nav-left">
+            <a href="index.html" class="logo-link">
+                <img src="images/纵向-亮色背景.png" alt="Team Logo" class="nav-logo">
+                <span class="nav-brand">ICII 2026</span>
+            </a>
+        </div>
+        <div class="nav-right">
+            <a href="index.html" class="nav-item">首页</a>
+            <a href="garden-atlas.html" class="nav-item">一城一景</a>
+            <a href="framed-views.html" class="nav-item">借景相望</a>
+            <a href="condensation-workshop.html" class="nav-item">聚景成园</a>
+            <a href="echo-pavilion.html" class="nav-item">回声亭</a>
+            <a href="cellapp.html" class="nav-item">Cell App</a>
+        </div>
+    </nav>
+
+    <div class="app-wrapper">
+        <nav class="sidebar" aria-label="侧边导航">
+            <div class="sidebar-brand">
+                <span>回声亭</span> · 聚景
+            </div>
+            <div class="sidebar-nav">
+                <div class="nav-divider"></div>
+                <div class="nav-label">协作工具</div>
+                <a class="menu-item" href="#task-a">
+                    <i class="fas fa-arrow-right-arrow-left"></i> 模块交换
+                </a>
+                <a class="menu-item" href="#task-b">
+                    <i class="fas fa-pen-fancy"></i> 联合设计
+                </a>
+                <a class="menu-item" href="#task-c">
+                    <i class="fas fa-video"></i> 科普创作
+                </a>
+            </div>
+            <div class="sidebar-footer">
+                <span>v1.0</span>
+                <span>iGEM · 聚景</span>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <section id="section-4" class="section">
+                <div class="page-header">
+                    <h1><span class="title-bg">聚景成园</span></h1>
+                </div>
+                <div class="task-stack">
+                    <div id="task-a" class="task-card">
+                        <div class="task-meta">
+                            <div class="task-icon"><i class="fas fa-cubes"></i></div>
+                            <div class="task-title-group">
+                                <h2>A. 模块交换</h2>
+                                <span class="task-badge">可复用 · 迁移</span>
+                            </div>
+                        </div>
+                        <div class="task-details">
+                            <p>双方分别介绍一个可复用的实验、建模、硬件、软件、HP或教育模块，讨论其能否迁移到对方项目。</p>
+                            <div class="highlight-box">
+                                <strong>产出：</strong> Synthetic Biology Module Exchange Card
+                                <ul>
+                                    <li>模块功能</li>
+                                    <li>使用条件</li>
+                                    <li>适用范围</li>
+                                    <li>潜在风险</li>
+                                </ul>
+                            </div>
+                            <div style="margin-top: 0.3rem; font-size: 0.9rem; color: var(--color-text-muted);">
+                                <i class="fas fa-arrows-spin" style="margin-right: 0.4rem;"></i> 迁移可行性讨论
+                            </div>
+                            <div class="btn-ghost"><i class="far fa-file-alt"></i> 查看交换卡模板</div>
+                        </div>
+                    </div>
+                    <div id="task-b" class="task-card">
+                        <div class="task-meta">
+                            <div class="task-icon"><i class="fas fa-merge"></i></div>
+                            <div class="task-title-group">
+                                <h2>B. 联合应用设计</h2>
+                                <span class="task-badge">概念 · 系统</span>
+                            </div>
+                        </div>
+                        <div class="task-details">
+                            <p>两支团队共同构想一个结合双方项目的应用场景。不要求实验，形成简短概念设计。</p>
+                            <div class="highlight-box">
+                                <strong>包含内容：</strong>
+                                <ul>
+                                    <li>目标问题</li>
+                                    <li>项目分别承担的功能</li>
+                                    <li>模块间信息/物质交换</li>
+                                    <li>可能的应用场景</li>
+                                    <li>生物安全与伦理问题</li>
+                                </ul>
+                            </div>
+                            <p style="margin-top: 0.4rem; font-style: italic; color: #4d5f59;">
+                                <i class="fas fa-circle-nodes"></i> “不同凝聚体共同构成复杂系统”
+                            </p>
+                            <div class="btn-ghost"><i class="fas fa-pencil"></i> 设计画布</div>
+                        </div>
+                    </div>
+                    <div id="task-c" class="task-card">
+                        <div class="task-meta">
+                            <div class="task-icon"><i class="fas fa-people-group"></i></div>
+                            <div class="task-title-group">
+                                <h2>C. 联合科普创作</h2>
+                                <span class="task-badge">传播 · 教育</span>
+                            </div>
+                        </div>
+                        <div class="task-details">
+                            <p>双方共同制作一项公众教育材料，参与门槛较低，便于进入学校、社区和线上平台。</p>
+                            <div class="highlight-box" style="background: rgba(241, 237, 232, 0.7);">
+                                <strong>形式可选：</strong>
+                                <ul>
+                                    <li>双语项目卡片</li>
+                                    <li>漫画 / 信息图</li>
+                                    <li>60–90秒科普视频</li>
+                                    <li>面向中学生的案例分析</li>
+                                    <li>“两个项目如何合作”互动题目</li>
+                                </ul>
+                            </div>
+                            <div class="badge-group">
+                                <span class="badge"><i class="far fa-comment"></i> 低门槛</span>
+                                <span class="badge"><i class="fas fa-school"></i> 教育</span>
+                                <span class="badge"><i class="fas fa-globe"></i> 传播</span>
+                            </div>
+                            <div class="btn-ghost"><i class="fas fa-film"></i> 素材包</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flow-row">
+                    <span><i class="fas fa-arrow-right"></i> 模块交换 → 迁移卡</span>
+                    <span><i class="fas fa-arrow-right"></i> 联合设计 → 概念蓝图</span>
+                    <span><i class="fas fa-arrow-right"></i> 科普创作 → 公众触点</span>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const globalNavItems = gsap.utils.toArray('.nav-item');
+        function createGlobalNavPetal(parent) {
+            const petal = document.createElement('div');
+            petal.classList.add('nav-petal');
+            parent.appendChild(petal);
+            const startX = Math.random() * parent.offsetWidth;
+            const startY = -10;
+            gsap.set(petal, { x: startX, y: startY, rotation: Math.random() * 360, scale: Math.random() * 0.5 + 0.5 });
+            gsap.to(petal, {
+                y: parent.offsetHeight + 10,
+                x: startX + (Math.random() * 20 - 10),
+                rotation: "+=" + (Math.random() * 200 - 100),
+                opacity: 0,
+                duration: 0.5 + Math.random() * 0.4,
+                ease: "power1.in",
+                onComplete: () => petal.remove()
+            });
+        }
+        globalNavItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                for (let j = 0; j < 6; j++) {
+                    setTimeout(() => { createGlobalNavPetal(item); }, j * 60);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
